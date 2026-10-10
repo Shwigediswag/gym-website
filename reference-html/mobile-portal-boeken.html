@@ -1,0 +1,106 @@
+<!doctype html>
+<!-- Gym · design E (Amber) · static reference page exported from the design canvas. Inline styles are intentional: translate them into Tailwind utilities / Twig components per HANDOFF.md. -->
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Gym — Mobiele boekingspagina</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Barlow:wght@400;500;600&display=swap">
+<style>
+body{margin:0;background:#121214;font-family:'Barlow',system-ui,sans-serif;color:#F4F4F2}
+a{color:#F4F4F2;text-decoration:none}a:hover{color:#F2A33A}
+.av{width:32px;height:32px;border-radius:50%;background:#2C2C32;border:2px solid #17171A;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#C9C9CF}
+.pill{padding:12px 14px;border:1px solid #3A3A41;background:none;color:#F4F4F2;font-weight:600;font-size:14px;cursor:pointer;font-family:inherit;min-height:44px}
+.lbl{margin:0;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600}
+.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600}
+.day{flex:1 1 0;min-width:0;height:64px;border:1px solid #3A3A41;background:none;color:#F4F4F2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;font-family:inherit;font-size:11px;padding:0}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0;font-size:11px;font-weight:600;color:#8E8E96}
+</style>
+<div style="width: 100%; max-width: 430px; margin: 0 auto; min-height: 100vh; background: #121214; display: flex; flex-direction: column; position: relative; box-sizing: border-box">
+
+<header style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; border-bottom: 1px solid #26262B">
+  <a href="mobile-home.html" aria-label="Gym home" style="display: flex; align-items: baseline; gap: 2px"><span class="serif" style="font-size: 28px; line-height: 1">Gym</span><span style="width: 7px; height: 7px; background: #F2A33A; display: inline-block"></span></a>
+  <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #C9C9CF"><span>Hoi, [Voornaam]</span><span class="av">[JD]</span></div>
+</header>
+
+<main style="padding: 24px 20px 120px; display: flex; flex-direction: column; gap: 24px">
+  <div style="display: flex; flex-direction: column; gap: 6px">
+    <h1 class="serif" style="margin: 0; font-size: 40px; line-height: 1">Boeken</h1>
+    <p style="margin: 0; color: #8E8E96; font-size: 14px">Vaste tijden, een losse dag of een 1-op-1.</p>
+  </div>
+
+  <div style="display: flex; border: 1px solid #3A3A41">
+    <button style="flex: 1; padding: 12px 0; background: #F2A33A; color: #121214; border: none; font-weight: 700; font-size: 13px; cursor: pointer; font-family: inherit">Vaste tijden</button>
+    <button style="flex: 1; padding: 12px 0; background: none; color: #F4F4F2; border: none; border-left: 1px solid #3A3A41; font-weight: 600; font-size: 13px; cursor: pointer; font-family: inherit">Losse dag</button>
+    <button style="flex: 1; padding: 12px 0; background: none; color: #F4F4F2; border: none; border-left: 1px solid #3A3A41; font-weight: 600; font-size: 13px; cursor: pointer; font-family: inherit">1-op-1</button>
+  </div>
+
+  <section style="background: #17171A; border: 1px solid #26262B; padding: 20px; display: flex; flex-direction: column; gap: 18px">
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><p class="lbl" style="color: #F2A33A">Vaste tijden</p><span style="font-size: 12px; color: #8E8E96">ma + do 18:00 t/m 31 dec</span></div>
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <strong style="font-size: 15px">1 · Kies je dagen</strong>
+      <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px">
+        <button class="pill" style="padding: 12px 0; background: #F2A33A; color: #121214; border-color: #F2A33A">Ma</button><button class="pill" style="padding: 12px 0">Di</button><button class="pill" style="padding: 12px 0">Wo</button><button class="pill" style="padding: 12px 0; background: #F2A33A; color: #121214; border-color: #F2A33A">Do</button><button class="pill" style="padding: 12px 0">Vr</button><button class="pill" style="padding: 12px 0">Za</button>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <strong style="font-size: 15px">2 · Kies je uur</strong>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px">
+        <button class="pill">07:00 <span style="color: #8E8E96; font-weight: 500">· Noor</span></button><button class="pill">12:00 <span style="color: #8E8E96; font-weight: 500">· Sam</span></button><button class="pill" style="background: #F2A33A; color: #121214; border-color: #F2A33A">18:00 · Sam</button><button class="pill" style="opacity: 0.45">19:30 · vol</button>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <strong style="font-size: 15px">3 · Voor hoe lang?</strong>
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <button class="pill" style="text-align: left">4 weken</button><button class="pill" style="text-align: left; background: #F2A33A; color: #121214; border-color: #F2A33A">Tot 31 december</button><button class="pill" style="text-align: left">Tot ik opzeg</button>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 12px; padding: 16px; background: #121214; border: 1px solid #26262B">
+      <div style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 15px">Ma + Do · 18:00 · groep van Sam</strong><span style="color: #8E8E96; font-size: 13px">22 sessies · t/m 31 dec · [PRIJS] / maand</span></div>
+      <button style="padding: 14px; background: #F2A33A; color: #121214; border: none; font-weight: 700; font-size: 15px; cursor: pointer; font-family: inherit">Vaste tijden bevestigen</button>
+    </div>
+  </section>
+
+  <section style="border: 1px solid #26262B; padding: 20px; display: flex; flex-direction: column; gap: 16px">
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px"><p class="lbl" style="color: #F2A33A">Losse dag boeken</p><span style="font-size: 12px; color: #8E8E96">week 42</span></div>
+    <div style="display: flex; gap: 6px">
+      <button class="day"><span style="color: #8E8E96">ma</span><strong class="serif" style="font-size: 18px">12</strong></button>
+      <button class="day"><span style="color: #8E8E96">di</span><strong class="serif" style="font-size: 18px">13</strong></button>
+      <button class="day" style="background: #F2A33A; color: #121214; border-color: #F2A33A"><span>wo</span><strong class="serif" style="font-size: 18px">14</strong></button>
+      <button class="day"><span style="color: #8E8E96">do</span><strong class="serif" style="font-size: 18px">15</strong></button>
+      <button class="day"><span style="color: #8E8E96">vr</span><strong class="serif" style="font-size: 18px">16</strong></button>
+      <button class="day"><span style="color: #8E8E96">za</span><strong class="serif" style="font-size: 18px">17</strong></button>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <div style="border: 1px solid #26262B; padding: 14px; display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 14px"><div style="display: flex; flex-direction: column"><strong>07:00 · Small group</strong><span style="color: #8E8E96; font-size: 13px">Noor · 1 van 6</span></div><button class="pill" style="padding: 10px 12px; font-size: 13px">Boek</button></div>
+      <div style="border: 1px solid #26262B; padding: 14px; display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 14px; opacity: 0.5"><div style="display: flex; flex-direction: column"><strong>18:00 · Small group</strong><span style="color: #8E8E96; font-size: 13px">Sam · vol</span></div><span style="font-size: 13px; color: #8E8E96; border: 1px dashed #3A3A41; padding: 10px 12px">Wachtlijst</span></div>
+      <div style="border: 1px solid #26262B; padding: 14px; display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 14px"><div style="display: flex; flex-direction: column"><strong>19:30 · Small group</strong><span style="color: #8E8E96; font-size: 13px">Noor · 4 van 6</span></div><button class="pill" style="padding: 10px 12px; font-size: 13px">Boek</button></div>
+      <div style="border: 1px solid #F2A33A; padding: 14px; display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 14px"><div style="display: flex; flex-direction: column"><strong>12:00 · 1-op-1</strong><span style="color: #8E8E96; font-size: 13px">Sam · nog vrij</span></div><button style="padding: 10px 12px; font-size: 13px; background: #F2A33A; color: #121214; border: none; font-weight: 700; cursor: pointer; font-family: inherit; min-height: 44px">Boek 1-op-1</button></div>
+    </div>
+  </section>
+
+  <section style="border: 1px solid #26262B; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+    <p class="lbl" style="color: #F2A33A">Jouw groep</p>
+    <div style="display: flex; align-items: center; gap: 12px"><span class="av" style="width: 42px; height: 42px; font-size: 12px; background: #3A3A41">[S]</span><div style="display: flex; flex-direction: column"><strong>Sam [Achternaam]</strong><span style="color: #8E8E96; font-size: 13px">Trainer · kracht</span></div></div>
+    <div style="display: flex; align-items: center; gap: 10px"><div style="display: flex"><span class="av">[L]</span><span class="av" style="margin-left: -8px">[R]</span><span class="av" style="margin-left: -8px">[M]</span><span class="av" style="margin-left: -8px">[T]</span><span class="av" style="margin-left: -8px">[K]</span></div><span style="font-size: 13px; color: #C9C9CF">Lotte, Rik, Maud, Tom, Kim</span></div>
+  </section>
+
+  <section style="border: 1px solid #26262B; padding: 20px; display: flex; flex-direction: column; gap: 4px">
+    <p class="lbl" style="color: #8E8E96; margin-bottom: 8px">Komende sessies</p>
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #26262B; font-size: 14px"><div style="display: flex; flex-direction: column"><strong>Ma 12 okt · 18:00</strong><span style="color: #8E8E96; font-size: 13px">Groep · Sam</span></div><button class="pill" style="padding: 8px 12px; min-height: 36px; font-size: 13px">Afmelden</button></div>
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #26262B; font-size: 14px"><div style="display: flex; flex-direction: column"><strong>Wo 14 okt · 12:00</strong><span style="color: #8E8E96; font-size: 13px">1-op-1 · Sam</span></div><button class="pill" style="padding: 8px 12px; min-height: 36px; font-size: 13px">Afmelden</button></div>
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; font-size: 14px"><div style="display: flex; flex-direction: column"><strong>Do 15 okt · 18:00</strong><span style="color: #8E8E96; font-size: 13px">Groep · Sam</span></div><button class="pill" style="padding: 8px 12px; min-height: 36px; font-size: 13px">Afmelden</button></div>
+  </section>
+</main>
+
+<nav style="position: absolute; left: 0; right: 0; bottom: 0; display: flex; background: #0C0C0E; border-top: 1px solid #26262B; padding-bottom: 14px">
+  <a href="#vast" class="tab" style="color: #F2A33A"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path></svg>Boeken</a>
+  <a href="#komend" class="tab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Sessies</a>
+  <a href="#groep" class="tab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><circle cx="17" cy="9" r="2.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0M15 19.5a4.5 4.5 0 0 1 6.5 0"></path></svg>Groep</a>
+  <a href="#profiel" class="tab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Profiel</a>
+</nav>
+</div>
+</body>
+</html>

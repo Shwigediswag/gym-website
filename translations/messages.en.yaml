@@ -1,0 +1,41 @@
+# Gym — English (second language). Keep the same warm, direct tone as the Dutch copy.
+site:
+    name: Gym
+    tagline: 'By appointment. By name.'
+
+a11y:
+    skip_to_content: 'Skip to content'
+
+nav:
+    story: 'Our story'
+    training: 'Training'
+    trainers: 'Trainers'
+    experiences: 'Stories'
+    login: 'Log in'
+    logout: 'Log out'
+    intro: 'Free intro session'
+    language: 'Language'
+
+brand:
+    no_pass: 'No membership card. An appointment.'
+    knows_your_name: 'Your trainer knows your name.'
+    coffee: 'Come have a coffee first.'
+    about_heading: 'Your trainer knows you, and your right knee.'
+
+home:
+    hero:
+        label: 'Small group & personal training · %city%'
+        intro: 'Gym is a small training studio. You book a fixed hour, train in a group of at most %max% and have one trainer who really gets to know you. Or 1-on-1, if you prefer.'
+        cta_primary: 'Plan your free intro session'
+        cta_secondary: 'See what we offer'
+    story:
+        heading: 'No membership card. An appointment.'
+        p1: 'You book an hour, your trainer knows you are coming, and so do the people you train with. That simple.'
+        link: 'Read our story'
+
+foundation:
+    notice: 'Foundation page. The real pages are built with the page builder.'
+
+form:
+    required: 'Required'
+    submit: 'Send'

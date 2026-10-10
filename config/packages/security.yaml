@@ -1,0 +1,41 @@
+security:
+    password_hashers:
+        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+
+    # HANDOFF §2: ROLE_MEMBER, ROLE_TRAINER, ROLE_ADMIN (+ ROLE_SUPER_ADMIN for the owner account).
+    role_hierarchy:
+        ROLE_MEMBER: [ROLE_USER]
+        ROLE_TRAINER: [ROLE_USER]
+        ROLE_ADMIN: [ROLE_TRAINER]
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        app_user_provider:
+            entity:
+                class: App\Security\Entity\User
+                property: email
+
+    firewalls:
+        dev:
+            pattern: ^/(_profiler|_wdt|assets|build)/
+            security: false
+        main:
+            lazy: true
+            provider: app_user_provider
+            # form_login, remember_me and login_throttling are added in Phase 1.2 (login page).
+            logout:
+                path: /uitloggen
+                target: marketing_home
+
+    access_control:
+        - { path: ^/(en/)?admin, roles: ROLE_ADMIN }
+        - { path: ^/(mijn|en/my)(/|$), roles: ROLE_MEMBER }
+
+when@test:
+    security:
+        password_hashers:
+            Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface:
+                algorithm: auto
+                cost: 4
+                time_cost: 3
+                memory_cost: 10

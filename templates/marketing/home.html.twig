@@ -1,0 +1,35 @@
+{# Foundation smoke page: proves tokens, fonts, i18n and settings work. Replaced by the block page builder (Phase 1.5/1.7). #}
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'site.tagline'|trans }}{{ setting('seo.title_suffix') }}{% endblock %}
+
+{% block body %}
+<main id="main" class="px-gutter-m md:px-gutter max-w-site mx-auto">
+    <section class="pt-12 md:pt-[88px] pb-section-m md:pb-section flex flex-col items-center text-center gap-5 md:gap-9">
+        <span class="label-caps text-accent">{{ 'home.hero.label'|trans({'%city%': setting('studio.city')}) }}</span>
+        <h1 class="font-display font-semibold text-display-xl-m md:text-display-xl leading-none max-w-[880px]">{{ 'site.tagline'|trans }}</h1>
+        <p class="text-lead text-ink-soft max-w-[640px]">{{ 'home.hero.intro'|trans({'%max%': setting('booking.max_group_size')}) }}</p>
+        <div class="flex flex-wrap gap-3 justify-center">
+            <a href="#" class="btn-primary">{{ 'home.hero.cta_primary'|trans }}</a>
+            <a href="#" class="btn-outline">{{ 'home.hero.cta_secondary'|trans }}</a>
+        </div>
+    </section>
+
+    <section class="border-t border-line pt-12 md:pt-24 pb-section-m md:pb-section grid gap-8 md:gap-16 md:grid-cols-2 items-start">
+        <h2 class="font-display font-semibold text-display-lg-m md:text-display-lg leading-[1.05]">{{ 'home.story.heading'|trans }}</h2>
+        <div class="flex flex-col gap-5 text-body text-ink-soft">
+            <p>{{ 'home.story.p1'|trans }}</p>
+            <p class="text-ink-mute text-small">{{ 'foundation.notice'|trans }}</p>
+        </div>
+    </section>
+
+    <footer class="border-t border-line py-10 flex flex-wrap gap-6 items-center justify-between text-small text-ink-mute">
+        <span>{{ setting('studio.address') }} · {{ setting('studio.phone') }}</span>
+        <nav aria-label="{{ 'nav.language'|trans }}" class="flex gap-4">
+            {% for locale in app_locales %}
+                <a href="{{ path('marketing_home', {_locale: locale}) }}" class="label-caps {{ locale == app.request.locale ? 'text-accent' : 'text-ink-soft' }}" {% if locale == app.request.locale %}aria-current="page"{% endif %}>{{ locale|upper }}</a>
+            {% endfor %}
+        </nav>
+    </footer>
+</main>
+{% endblock %}

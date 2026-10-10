@@ -1,0 +1,125 @@
+<!doctype html>
+<!-- Gym · design E (Amber) · static reference page exported from the design canvas. Inline styles are intentional: translate them into Tailwind utilities / Twig components per HANDOFF.md. -->
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Gym — Amber homepage</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Barlow:wght@400;500;600&display=swap">
+<style>
+body{margin:0;background:#121214;font-family:'Barlow',system-ui,sans-serif;color:#F4F4F2}
+a{color:#F4F4F2;text-decoration:none}a:hover{color:#F2A33A}
+.ph{background-color:#1F1F23;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,0.035) 0 2px,transparent 2px 14px);border:1px solid #2C2C32;display:flex;align-items:flex-end;padding:14px;box-sizing:border-box;color:#8E8E96;font-size:12px;letter-spacing:0.08em;text-transform:uppercase}
+.lbl{margin:0;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;font-weight:600}
+</style>
+<div style="width: 100%; min-height: 3200px; background: #121214; display: flex; flex-direction: column; position: relative">
+
+<header style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 56px; border-bottom: 1px solid #26262B; flex-wrap: wrap">
+  <nav style="display: flex; gap: 28px; font-size: 15px; font-weight: 500; flex: 1 1 300px">
+    <a href="#verhaal">Ons verhaal</a><a href="#trainen">Trainen</a><a href="#team">Trainers</a><a href="#ervaringen">Ervaringen</a>
+  </nav>
+  <a href="#top" aria-label="Gym home" style="display: flex; align-items: baseline; gap: 2px">
+    <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 38px; line-height: 1; letter-spacing: 0.02em">Gym</span><span style="width: 9px; height: 9px; background: #F2A33A; display: inline-block"></span>
+  </a>
+  <div style="display: flex; gap: 12px; align-items: center; justify-content: flex-end; flex: 1 1 300px">
+    <a href="portal-boeken.html" style="padding: 12px 18px; border: 1px solid #3A3A41; font-weight: 600; font-size: 14px">Inloggen</a>
+    <a href="#kennismaking" style="padding: 12px 20px; background: #F2A33A; color: #121214; font-weight: 700; font-size: 14px">Gratis kennismaking</a>
+  </div>
+</header>
+
+<section id="top" style="padding: 88px 56px 0; display: flex; flex-direction: column; gap: 36px; align-items: center; text-align: center">
+  <p class="lbl" style="color: #F2A33A">Small group &amp; personal training · [STAD]</p>
+  <h1 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 88px; line-height: 1; max-width: 880px; text-wrap: balance">Op afspraak. Op naam.</h1>
+  <p style="margin: 0; font-size: 20px; line-height: 1.55; color: #C9C9CF; max-width: 620px">Gym is een kleine trainingsstudio. Je boekt een vast uur, traint in een groep van maximaal [6] en hebt één trainer die je echt leert kennen. Of 1-op-1, als je dat liever hebt.</p>
+  <div style="display: flex; gap: 14px; flex-wrap: wrap; justify-content: center">
+    <a href="#kennismaking" style="padding: 18px 28px; background: #F2A33A; color: #121214; font-weight: 700; font-size: 16px">Plan je gratis kennismaking</a>
+    <a href="#trainen" style="padding: 18px 28px; border: 1px solid #3A3A41; font-weight: 600; font-size: 16px">Bekijk het aanbod</a>
+  </div>
+
+  <div style="width: 100%; display: flex; flex-direction: column; gap: 16px; padding-top: 24px">
+    <div style="display: flex; gap: 12px; overflow-x: auto; padding-bottom: 4px">
+      <div class="ph" style="flex: 0 0 60%; min-width: 320px; height: 520px">[Hero-slide 1: trainer en groep, close en persoonlijk]</div>
+      <div class="ph" style="flex: 0 0 40%; min-width: 280px; height: 520px">[Hero-slide 2: 1-op-1 sessie]</div>
+      <div class="ph" style="flex: 0 0 40%; min-width: 280px; height: 520px">[Hero-slide 3: de studio]</div>
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap">
+      <p style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 24px; color: #C9C9CF">Maandag 18:00 — Sam, Lotte, Rik, Maud, Tom en jij.</p>
+      <div style="display: flex; gap: 8px; align-items: center">
+        <span style="width: 24px; height: 2px; background: #F2A33A"></span><span style="width: 8px; height: 2px; background: #3A3A41"></span><span style="width: 8px; height: 2px; background: #3A3A41"></span>
+        <button aria-label="Vorige" style="margin-left: 12px; width: 44px; height: 44px; background: none; border: 1px solid #3A3A41; color: #F4F4F2; cursor: pointer">‹</button>
+        <button aria-label="Volgende" style="width: 44px; height: 44px; background: none; border: 1px solid #3A3A41; color: #F4F4F2; cursor: pointer">›</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<a id="kennismaking" href="#kennismaking" style="position: absolute; right: 0; top: 900px; display: flex; align-items: center; gap: 10px; padding: 16px 22px 16px 24px; background: #F2A33A; color: #121214; font-weight: 700; font-size: 15px; box-shadow: 0 8px 30px rgba(0,0,0,0.45)">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>Gratis kennismaking
+</a>
+
+<section id="verhaal" style="padding: 128px 56px 96px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr)); gap: 64px; align-items: start; border-top: 1px solid #26262B; margin-top: 96px">
+  <h2 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 56px; line-height: 1.05">Geen pasje.<br>Een afspraak.</h2>
+  <div style="display: flex; flex-direction: column; gap: 28px; font-size: 18px; line-height: 1.65; color: #C9C9CF">
+    <p style="margin: 0">Bij een gewone sportschool loop je binnen wanneer je wilt, en loopt niemand met je mee. Bij Gym is het andersom: je legt je uren vast — voor een week, of voor de rest van het seizoen — en wij zorgen dat op dat uur jouw groep en jouw trainer er zijn.</p>
+    <p style="margin: 0">Je traint met dezelfde [vijf] mensen. Je trainer weet dat je nek gevoelig is en dat je dinsdag altijd moe binnenkomt. Dat is geen extraatje, dat is het hele idee.</p>
+    <a href="#verhaal" style="color: #F2A33A; font-weight: 600; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase">Lees ons verhaal →</a>
+  </div>
+</section>
+
+<section id="trainen" style="padding: 0 56px 112px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 1px; background: #26262B; border: 1px solid #26262B; margin: 0 56px">
+  <div style="background: #121214; display: flex; flex-direction: column; gap: 18px; padding: 32px">
+    <div class="ph" style="height: 220px">[Foto: small group]</div>
+    <h3 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 36px; font-weight: 600">Small group</h3>
+    <p style="margin: 0; color: #C9C9CF; line-height: 1.6">Max. [6] personen, een vaste groep, een vaste trainer. 60 minuten.</p>
+    <span style="color: #F2A33A; font-weight: 600">vanaf [PRIJS] / maand</span>
+  </div>
+  <div style="background: #121214; display: flex; flex-direction: column; gap: 18px; padding: 32px">
+    <div class="ph" style="height: 220px">[Foto: 1-op-1]</div>
+    <h3 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 36px; font-weight: 600">1-op-1</h3>
+    <p style="margin: 0; color: #C9C9CF; line-height: 1.6">Alleen jij en je trainer, op een moment dat jou uitkomt. Ook naast je groepstraining.</p>
+    <span style="color: #F2A33A; font-weight: 600">vanaf [PRIJS] / sessie</span>
+  </div>
+  <div style="background: #121214; display: flex; flex-direction: column; gap: 18px; padding: 32px">
+    <div class="ph" style="height: 220px">[Foto: agenda / vaste tijden]</div>
+    <h3 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 36px; font-weight: 600">Vaste tijden</h3>
+    <p style="margin: 0; color: #C9C9CF; line-height: 1.6">Leg je uren voor langere tijd vast en je plek is gegarandeerd. Verhinderd? Afmelden tot [24] uur van tevoren.</p>
+    <span style="color: #F2A33A; font-weight: 600">inbegrepen</span>
+  </div>
+</section>
+
+<section id="team" style="padding: 96px 56px; background: #0C0C0E; display: flex; flex-direction: column; gap: 40px">
+  <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap">
+    <h2 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 56px; line-height: 1.05">Maak kennis met je trainers</h2>
+    <p style="margin: 0; color: #C9C9CF; max-width: 420px; line-height: 1.6">Je kiest je trainer al bij de kennismaking. Daarna blijft het dezelfde.</p>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 12px">
+    <div style="display: flex; flex-direction: column; gap: 12px"><div class="ph" style="height: 380px">[Portret trainer 1]</div><strong style="font-size: 20px">[Naam]</strong><span style="color: #8E8E96">Kracht &amp; mobiliteit · ma, wo, vr</span></div>
+    <div style="display: flex; flex-direction: column; gap: 12px"><div class="ph" style="height: 380px">[Portret trainer 2]</div><strong style="font-size: 20px">[Naam]</strong><span style="color: #8E8E96">Conditie &amp; herstel · di, do, za</span></div>
+    <div style="display: flex; flex-direction: column; gap: 12px"><div class="ph" style="height: 380px">[Portret trainer 3]</div><strong style="font-size: 20px">[Naam]</strong><span style="color: #8E8E96">Blessurevrij trainen · ma, do, za</span></div>
+  </div>
+</section>
+
+<section id="ervaringen" style="padding: 112px 56px; display: flex; flex-direction: column; gap: 32px; align-items: center; text-align: center">
+  <p class="lbl" style="color: #F2A33A">Wat leden zeggen</p>
+  <blockquote style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 44px; line-height: 1.25; max-width: 900px; font-weight: 500">„[Quote van een lid over de groep of de trainer — uit een echt gesprek, niet verzonnen.]”</blockquote>
+  <span style="color: #8E8E96">[Voornaam], lid sinds [maand]</span>
+  <div style="display: flex; gap: 8px"><span style="width: 24px; height: 2px; background: #F2A33A"></span><span style="width: 8px; height: 2px; background: #3A3A41"></span><span style="width: 8px; height: 2px; background: #3A3A41"></span></div>
+</section>
+
+<section style="margin: 0 56px; padding: 72px; border: 1px solid #F2A33A; display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap">
+  <div style="display: flex; flex-direction: column; gap: 10px">
+    <h2 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 48px; line-height: 1.05">Kom eerst een kop koffie drinken.</h2>
+    <p style="margin: 0; color: #C9C9CF; font-size: 18px">Een half uur, zonder verplichting. We bekijken samen welke groep bij je past.</p>
+  </div>
+  <a href="#kennismaking" style="padding: 18px 32px; background: #F2A33A; color: #121214; font-weight: 700; font-size: 16px">Gratis kennismaking plannen</a>
+</section>
+
+<footer style="margin-top: auto; padding: 56px 56px 40px; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; color: #8E8E96; font-size: 14px">
+  <span>Gym · [Adres], [STAD] · [Telefoon]</span>
+  <div style="display: flex; gap: 24px"><a href="#ervaringen">Instagram</a><a href="#ervaringen">Privacy</a><a href="#ervaringen">Voorwaarden</a></div>
+</footer>
+</div>
+</body>
+</html>

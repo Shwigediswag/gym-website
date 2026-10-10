@@ -1,0 +1,24 @@
+{# Gym — base layout. Dark theme, tokens from design-tokens.css. Site chrome (header/footer/sticky CTA) comes in Phase 1.4, SEO head in 1.9. #}
+<!DOCTYPE html>
+<html lang="{{ app.request.locale|default(app_default_locale) }}" class="bg-ground text-ink">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{{ 'site.name'|trans }}{% endblock %}</title>
+    <meta name="theme-color" content="#121214">
+    {% block seo %}{% endblock %}
+
+    <link rel="preload" href="{{ asset('fonts/cormorant-garamond-600.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ asset('fonts/barlow-400.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+    {% block stylesheets %}{% endblock %}
+
+    {% block javascripts %}
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% endblock %}
+</head>
+<body class="min-h-screen bg-ground text-ink font-sans antialiased">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-accent focus:text-accent-ink focus:px-4 focus:py-3 label-caps">{{ 'a11y.skip_to_content'|trans }}</a>
+    {% block body %}{% endblock %}
+</body>
+</html>

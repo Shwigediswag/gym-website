@@ -1,0 +1,126 @@
+<!doctype html>
+<!-- Gym · design E (Amber) · static reference page exported from the design canvas. Inline styles are intentional: translate them into Tailwind utilities / Twig components per HANDOFF.md. -->
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Gym — Aanmelden voor een gratis kennismaking</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Barlow:wght@400;500;600&display=swap">
+<style>
+body{margin:0;background:#121214;font-family:'Barlow',system-ui,sans-serif;color:#F4F4F2}
+a{color:#F4F4F2;text-decoration:none}a:hover{color:#F2A33A}
+.ph{background-color:#1F1F23;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,0.035) 0 2px,transparent 2px 14px);border:1px solid #2C2C32;display:flex;align-items:flex-end;padding:14px;box-sizing:border-box;color:#8E8E96;font-size:12px;letter-spacing:0.08em;text-transform:uppercase}
+.lbl{margin:0;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;font-weight:600}
+.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600}
+.in{width:100%;box-sizing:border-box;padding:14px 16px;background:#17171A;border:1px solid #3A3A41;color:#F4F4F2;font-family:inherit;font-size:16px;min-height:48px}
+.in:focus{outline:2px solid #F2A33A;outline-offset:0}
+.fl{font-size:14px;font-weight:600;color:#C9C9CF}
+.opt{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid #3A3A41;cursor:pointer;font-size:15px;min-height:48px;box-sizing:border-box}
+.opt input{width:18px;height:18px;accent-color:#F2A33A;margin:0}
+.cell{display:flex;align-items:center;justify-content:center;border:1px solid #3A3A41;min-height:48px;cursor:pointer}
+.cell input{width:18px;height:18px;accent-color:#F2A33A;margin:0}
+</style>
+<div style="width: 100%; min-height: 2100px; background: #121214; display: flex; flex-direction: column">
+
+<header style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 56px; border-bottom: 1px solid #26262B; flex-wrap: wrap">
+  <nav style="display: flex; gap: 28px; font-size: 15px; font-weight: 500; flex: 1 1 300px">
+    <a href="over-ons.html">Ons verhaal</a><a href="home.html">Trainen</a><a href="over-ons.html">Trainers</a><a href="de-studio.html">De studio</a>
+  </nav>
+  <a href="home.html" aria-label="Gym home" style="display: flex; align-items: baseline; gap: 2px">
+    <span class="serif" style="font-size: 38px; line-height: 1; letter-spacing: 0.02em">Gym</span><span style="width: 9px; height: 9px; background: #F2A33A; display: inline-block"></span>
+  </a>
+  <div style="display: flex; gap: 12px; align-items: center; justify-content: flex-end; flex: 1 1 300px">
+    <a href="portal-boeken.html" style="padding: 12px 18px; border: 1px solid #3A3A41; font-weight: 600; font-size: 14px">Inloggen</a>
+  </div>
+</header>
+
+<div style="display: flex; flex-wrap: wrap; gap: 64px; padding: 80px 56px 96px; align-items: flex-start">
+
+  <aside style="flex: 1 1 360px; max-width: 480px; display: flex; flex-direction: column; gap: 32px">
+    <p class="lbl" style="color: #F2A33A">Gratis kennismaking</p>
+    <h1 class="serif" style="margin: 0; font-size: 72px; line-height: 1; text-wrap: balance">Vertel ons wie je bent. Wij regelen de rest.</h1>
+    <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #C9C9CF">Vul dit in, en binnen één werkdag belt [Naam] je om een moment te prikken. De kennismaking duurt een half uur, is gratis en verplicht je tot niets.</p>
+    <div style="display: flex; flex-direction: column; gap: 1px; background: #26262B; border: 1px solid #26262B">
+      <div style="background: #121214; padding: 20px 24px; display: flex; gap: 16px; align-items: baseline"><span class="serif" style="font-size: 28px; color: #F2A33A; line-height: 1">01</span><div style="display: flex; flex-direction: column; gap: 4px"><strong>Je vult dit formulier in</strong><span style="color: #8E8E96; font-size: 14px">Twee minuten, geen account nodig.</span></div></div>
+      <div style="background: #121214; padding: 20px 24px; display: flex; gap: 16px; align-items: baseline"><span class="serif" style="font-size: 28px; color: #F2A33A; line-height: 1">02</span><div style="display: flex; flex-direction: column; gap: 4px"><strong>We bellen je voor een afspraak</strong><span style="color: #8E8E96; font-size: 14px">Binnen één werkdag, op het moment dat jij aangeeft.</span></div></div>
+      <div style="background: #121214; padding: 20px 24px; display: flex; gap: 16px; align-items: baseline"><span class="serif" style="font-size: 28px; color: #F2A33A; line-height: 1">03</span><div style="display: flex; flex-direction: column; gap: 4px"><strong>Je komt een uur meekijken</strong><span style="color: #8E8E96; font-size: 14px">Je ontmoet je trainer en ziet een groep in actie.</span></div></div>
+    </div>
+    <div class="ph" style="height: 300px">[Foto: trainer aan de deur, verwelkomend]</div>
+  </aside>
+
+  <form style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 48px">
+
+    <fieldset style="margin: 0; padding: 0; border: none; display: flex; flex-direction: column; gap: 20px">
+      <legend class="serif" style="font-size: 32px; padding: 0; margin-bottom: 8px">1 · Jouw gegevens</legend>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 16px">
+        <div style="display: flex; flex-direction: column; gap: 8px"><label class="fl" for="vn">Voornaam</label><input class="in" id="vn" type="text" placeholder="Voornaam"></div>
+        <div style="display: flex; flex-direction: column; gap: 8px"><label class="fl" for="an">Achternaam</label><input class="in" id="an" type="text" placeholder="Achternaam"></div>
+        <div style="display: flex; flex-direction: column; gap: 8px"><label class="fl" for="em">E-mail</label><input class="in" id="em" type="email" placeholder="naam@voorbeeld.nl"></div>
+        <div style="display: flex; flex-direction: column; gap: 8px"><label class="fl" for="tel">Telefoon</label><input class="in" id="tel" type="tel" placeholder="06 …"></div>
+      </div>
+    </fieldset>
+
+    <fieldset style="margin: 0; padding: 0; border: none; display: flex; flex-direction: column; gap: 20px">
+      <legend class="serif" style="font-size: 32px; padding: 0; margin-bottom: 8px">2 · Wat wil je bereiken?</legend>
+      <p style="margin: 0; color: #8E8E96; font-size: 14px">Kies alles wat past. Dit helpt ons bij het kiezen van je groep en trainer.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 10px">
+        <label class="opt"><input type="checkbox" name="doel" value="sterker">Sterker worden</label>
+        <label class="opt"><input type="checkbox" name="doel" value="conditie">Betere conditie</label>
+        <label class="opt"><input type="checkbox" name="doel" value="afvallen">Afvallen</label>
+        <label class="opt" style="border-color: #F2A33A"><input type="checkbox" name="doel" value="blessure" checked>Blessurevrij bewegen</label>
+        <label class="opt"><input type="checkbox" name="doel" value="energie">Meer energie in de week</label>
+        <label class="opt"><input type="checkbox" name="doel" value="ritme">Gewoon weer in een ritme komen</label>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <span class="fl">Hoe vaak train je nu?</span>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 10px">
+          <label class="opt"><input type="radio" name="erv" value="nooit">Zelden of nooit</label>
+          <label class="opt" style="border-color: #F2A33A"><input type="radio" name="erv" value="soms" checked>Af en toe</label>
+          <label class="opt"><input type="radio" name="erv" value="vaak">Regelmatig</label>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px"><label class="fl" for="kn">Iets wat je trainer moet weten? (blessures, je rechterknie, een operatie)</label><textarea class="in" id="kn" rows="3" placeholder="Bijvoorbeeld: mijn rechterknie is sinds vorig jaar gevoelig bij diepe squats."></textarea></div>
+    </fieldset>
+
+    <fieldset style="margin: 0; padding: 0; border: none; display: flex; flex-direction: column; gap: 20px">
+      <legend class="serif" style="font-size: 32px; padding: 0; margin-bottom: 8px">3 · Wanneer kun je?</legend>
+      <p style="margin: 0; color: #8E8E96; font-size: 14px">Vink de dagdelen aan die meestal lukken. We zoeken daar een groep bij.</p>
+      <div style="overflow-x: auto">
+      <div style="display: grid; grid-template-columns: 110px repeat(6, minmax(72px, 1fr)); gap: 6px; min-width: 560px">
+        <span></span>
+        <span class="fl" style="text-align: center">Ma</span><span class="fl" style="text-align: center">Di</span><span class="fl" style="text-align: center">Wo</span><span class="fl" style="text-align: center">Do</span><span class="fl" style="text-align: center">Vr</span><span class="fl" style="text-align: center">Za</span>
+        <span class="fl" style="display: flex; align-items: center">Ochtend</span>
+        <label class="cell"><input type="checkbox" name="b" value="ma-o"></label><label class="cell"><input type="checkbox" name="b" value="di-o"></label><label class="cell"><input type="checkbox" name="b" value="wo-o"></label><label class="cell"><input type="checkbox" name="b" value="do-o"></label><label class="cell"><input type="checkbox" name="b" value="vr-o"></label><label class="cell"><input type="checkbox" name="b" value="za-o"></label>
+        <span class="fl" style="display: flex; align-items: center">Middag</span>
+        <label class="cell"><input type="checkbox" name="b" value="ma-m"></label><label class="cell"><input type="checkbox" name="b" value="di-m"></label><label class="cell"><input type="checkbox" name="b" value="wo-m"></label><label class="cell"><input type="checkbox" name="b" value="do-m"></label><label class="cell"><input type="checkbox" name="b" value="vr-m"></label><label class="cell"><input type="checkbox" name="b" value="za-m"></label>
+        <span class="fl" style="display: flex; align-items: center">Avond</span>
+        <label class="cell" style="border-color: #F2A33A"><input type="checkbox" name="b" value="ma-a" checked></label><label class="cell"><input type="checkbox" name="b" value="di-a"></label><label class="cell"><input type="checkbox" name="b" value="wo-a"></label><label class="cell" style="border-color: #F2A33A"><input type="checkbox" name="b" value="do-a" checked></label><label class="cell"><input type="checkbox" name="b" value="vr-a"></label><label class="cell" style="opacity: 0.4"><input type="checkbox" name="b" value="za-a" disabled></label>
+      </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <span class="fl">Waar denk je aan?</span>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 10px">
+          <label class="opt" style="border-color: #F2A33A"><input type="radio" name="vorm" value="groep" checked>Small group (max. [6])</label>
+          <label class="opt"><input type="radio" name="vorm" value="een">1-op-1</label>
+          <label class="opt"><input type="radio" name="vorm" value="weet">Weet ik nog niet</label>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px"><label class="fl" for="bel">Wanneer kunnen we je het beste bellen?</label><input class="in" id="bel" type="text" placeholder="Bijvoorbeeld: doordeweeks na 17:00"></div>
+    </fieldset>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 28px 32px; border: 1px solid #F2A33A; flex-wrap: wrap">
+      <label style="display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: #C9C9CF; max-width: 520px; line-height: 1.5"><input type="checkbox" style="width: 18px; height: 18px; accent-color: #F2A33A; margin: 2px 0 0; flex: 0 0 auto">We gebruiken je gegevens alleen om deze kennismaking te plannen. Zie onze <a href="#privacy" style="color: #F2A33A">privacyverklaring</a>.</label>
+      <button type="submit" style="padding: 18px 32px; background: #F2A33A; color: #121214; border: none; font-weight: 700; font-size: 16px; cursor: pointer; font-family: inherit">Verstuur en plan mijn kennismaking</button>
+    </div>
+  </form>
+</div>
+
+<footer style="margin-top: auto; padding: 40px 56px; border-top: 1px solid #26262B; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; color: #8E8E96; font-size: 14px">
+  <span>Gym · [Adres], [STAD] · [Telefoon]</span>
+  <div style="display: flex; gap: 24px"><a href="#privacy">Instagram</a><a href="#privacy">Privacy</a><a href="#privacy">Voorwaarden</a></div>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+# Gym — Nederlands (default). Copy letterlijk uit HANDOFF.md; toon: warm, direct, je/jij.
+site:
+    name: Gym
+    tagline: 'Op afspraak. Op naam.'
+
+a11y:
+    skip_to_content: 'Ga naar de inhoud'
+
+nav:
+    story: 'Ons verhaal'
+    training: 'Trainen'
+    trainers: 'Trainers'
+    experiences: 'Ervaringen'
+    login: 'Inloggen'
+    logout: 'Uitloggen'
+    intro: 'Gratis kennismaking'
+    language: 'Taal'
+
+brand:
+    no_pass: 'Geen pasje. Een afspraak.'
+    knows_your_name: 'Je trainer kent je naam.'
+    coffee: 'Kom eerst een kop koffie drinken.'
+    about_heading: 'Je trainer kent je, en je rechterknie.'
+
+home:
+    hero:
+        label: 'Small group & personal training · %city%'
+        intro: 'Gym is een kleine trainingsstudio. Je boekt een vast uur, traint in een groep van maximaal %max% en hebt één trainer die je echt leert kennen. Of 1-op-1, als je dat liever hebt.'
+        cta_primary: 'Plan je gratis kennismaking'
+        cta_secondary: 'Bekijk het aanbod'
+    story:
+        heading: 'Geen pasje. Een afspraak.'
+        p1: 'Je boekt een uur, je trainer weet dat je komt, en je mede-trainees ook. Zo simpel is het.'
+        link: 'Lees ons verhaal'
+
+foundation:
+    notice: 'Fundament-pagina. De echte pagina’s worden gebouwd met de paginabouwer.'
+
+form:
+    required: 'Verplicht'
+    submit: 'Versturen'

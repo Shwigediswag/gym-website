@@ -1,0 +1,13 @@
+twig:
+    file_name_pattern: '*.twig'
+    form_themes:
+        - 'form/gym_theme.html.twig'
+    date:
+        timezone: Europe/Amsterdam
+    globals:
+        app_locales: '%app.locales%'
+        app_default_locale: '%app.default_locale%'
+
+when@test:
+    twig:
+        strict_variables: true

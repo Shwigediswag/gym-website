@@ -1,0 +1,76 @@
+{# Gym form theme — Symfony Forms rendered in the house style (HANDOFF §5). Refined with Ui:* components in Phase 1.3. #}
+{% use 'form_div_layout.html.twig' %}
+
+{%- block form_row -%}
+    {%- set row_class = row_attr.class|default('') -%}
+    <div{% with {attr: row_attr|merge({class: ('flex flex-col gap-2 ' ~ row_class)|trim})} %}{{ block('attributes') }}{% endwith %}>
+        {{- form_label(form) -}}
+        {{- form_widget(form, {attr: attr|default({})}) -}}
+        {{- form_help(form) -}}
+        {{- form_errors(form) -}}
+    </div>
+{%- endblock form_row -%}
+
+{%- block form_label -%}
+    {%- if label is not same as(false) -%}
+        {%- set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' label-caps text-ink-soft')|trim}) -%}
+        {{- parent() -}}
+    {%- endif -%}
+{%- endblock form_label -%}
+
+{%- block form_label_content -%}
+    {{- parent() -}}
+    {%- if required -%}<span class="text-accent" aria-hidden="true"> *</span>{%- endif -%}
+{%- endblock form_label_content -%}
+
+{%- block form_widget_simple -%}
+    {%- set attr = attr|merge({class: (attr.class|default('') ~ ' input-field' ~ (errors|length ? ' border-accent' : ''))|trim}) -%}
+    {%- if errors|length -%}{%- set attr = attr|merge({'aria-invalid': 'true'}) -%}{%- endif -%}
+    {{- parent() -}}
+{%- endblock form_widget_simple -%}
+
+{%- block textarea_widget -%}
+    {%- set attr = attr|merge({class: (attr.class|default('') ~ ' input-field min-h-[140px] resize-y' ~ (errors|length ? ' border-accent' : ''))|trim}) -%}
+    {{- parent() -}}
+{%- endblock textarea_widget -%}
+
+{%- block choice_widget_collapsed -%}
+    {%- set attr = attr|merge({class: (attr.class|default('') ~ ' input-field appearance-none')|trim}) -%}
+    {{- parent() -}}
+{%- endblock choice_widget_collapsed -%}
+
+{%- block checkbox_row -%}
+    <div{% with {attr: row_attr|merge({class: ('flex items-start gap-3 min-h-touch ' ~ row_attr.class|default(''))|trim})} %}{{ block('attributes') }}{% endwith %}>
+        {{- form_widget(form) -}}
+        {{- form_label(form, null, {label_attr: {class: 'normal-case tracking-normal text-ui font-medium text-ink'}}) -}}
+        {{- form_help(form) -}}
+        {{- form_errors(form) -}}
+    </div>
+{%- endblock checkbox_row -%}
+
+{%- block checkbox_widget -%}
+    {%- set attr = attr|merge({class: (attr.class|default('') ~ ' mt-1 shrink-0')|trim}) -%}
+    {{- parent() -}}
+{%- endblock checkbox_widget -%}
+
+{%- block form_errors -%}
+    {%- if errors|length > 0 -%}
+        <ul class="flex flex-col gap-1 text-small text-accent" role="alert">
+            {%- for error in errors -%}
+                <li>{{ error.message }}</li>
+            {%- endfor -%}
+        </ul>
+    {%- endif -%}
+{%- endblock form_errors -%}
+
+{%- block form_help -%}
+    {%- if help is not empty -%}
+        {%- set help_attr = help_attr|merge({class: (help_attr.class|default('') ~ ' text-small text-ink-mute')|trim}) -%}
+        {{- parent() -}}
+    {%- endif -%}
+{%- endblock form_help -%}
+
+{%- block button_widget -%}
+    {%- set attr = attr|merge({class: (attr.class|default('') ~ ' btn-primary')|trim}) -%}
+    {{- parent() -}}
+{%- endblock button_widget -%}

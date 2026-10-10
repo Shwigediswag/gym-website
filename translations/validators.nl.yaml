@@ -1,0 +1,5 @@
+user:
+    email:
+        blank: 'Vul je e-mailadres in.'
+        invalid: 'Dit is geen geldig e-mailadres.'
+        unique: 'Er bestaat al een account met dit e-mailadres.'

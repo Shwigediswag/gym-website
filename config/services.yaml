@@ -1,0 +1,21 @@
+parameters:
+    app.default_locale: 'nl'
+    app.locales: ['nl', 'en']
+    app.superadmin_email: '%env(SUPERADMIN_EMAIL)%'
+    app.superadmin_password: '%env(SUPERADMIN_PASSWORD)%'
+    app.intake_notification_email: '%env(INTAKE_NOTIFICATION_EMAIL)%'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        bind:
+            string $defaultLocale: '%app.default_locale%'
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/Kernel.php'
+            - '../src/**/Entity/'
+            - '../src/**/Message/'
+            - '../src/**/Dto/'

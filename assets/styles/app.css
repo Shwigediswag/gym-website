@@ -1,0 +1,22 @@
+/* Gym — Tailwind v4 entry. Tokens come from design-tokens.css (copy of /design-tokens.css). */
+@import "tailwindcss";
+@import "./fonts.css";
+@import "./design-tokens.css";
+
+/* Tailwind only scans files git would track; make the template/source roots explicit. */
+@source "../../templates";
+@source "../../src";
+@source "../controllers";
+
+@layer base {
+  /* Respect reduced motion globally (HANDOFF §3 accessibility). */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  html { scroll-behavior: smooth; }
+}

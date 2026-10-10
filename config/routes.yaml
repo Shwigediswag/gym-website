@@ -1,0 +1,10 @@
+# Public site: localized prefix, nl at the root and en under /en (HANDOFF §9).
+marketing:
+    resource: ../src/Marketing/Controller/
+    type: attribute
+    prefix:
+        nl: ''
+        en: '/en'
+    trailing_slash_on_root: false
+    requirements:
+        _locale: nl|en

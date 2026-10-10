@@ -1,0 +1,108 @@
+<!doctype html>
+<!-- Gym · design E (Amber) · static reference page exported from the design canvas. Inline styles are intentional: translate them into Tailwind utilities / Twig components per HANDOFF.md. -->
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Gym — De studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Barlow:wght@400;500;600&display=swap">
+<style>
+body{margin:0;background:#121214;font-family:'Barlow',system-ui,sans-serif;color:#F4F4F2}
+a{color:#F4F4F2;text-decoration:none}a:hover{color:#F2A33A}
+.ph{background-color:#1F1F23;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,0.035) 0 2px,transparent 2px 14px);border:1px solid #2C2C32;display:flex;align-items:flex-end;padding:14px;box-sizing:border-box;color:#8E8E96;font-size:12px;letter-spacing:0.08em;text-transform:uppercase}
+.lbl{margin:0;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;font-weight:600}
+.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600}
+.chip{padding:10px 16px;border:1px solid #3A3A41;background:none;color:#F4F4F2;font-weight:600;font-size:14px;cursor:pointer;font-family:inherit;min-height:44px}
+</style>
+<div style="width: 100%; min-height: 2500px; background: #121214; display: flex; flex-direction: column; position: relative">
+
+<header style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 56px; border-bottom: 1px solid #26262B; flex-wrap: wrap">
+  <nav style="display: flex; gap: 28px; font-size: 15px; font-weight: 500; flex: 1 1 300px">
+    <a href="over-ons.html">Ons verhaal</a><a href="home.html">Trainen</a><a href="over-ons.html">Trainers</a><a href="de-studio.html" style="color: #F2A33A">De studio</a>
+  </nav>
+  <a href="home.html" aria-label="Gym home" style="display: flex; align-items: baseline; gap: 2px">
+    <span class="serif" style="font-size: 38px; line-height: 1; letter-spacing: 0.02em">Gym</span><span style="width: 9px; height: 9px; background: #F2A33A; display: inline-block"></span>
+  </a>
+  <div style="display: flex; gap: 12px; align-items: center; justify-content: flex-end; flex: 1 1 300px">
+    <a href="portal-boeken.html" style="padding: 12px 18px; border: 1px solid #3A3A41; font-weight: 600; font-size: 14px">Inloggen</a>
+    <a href="aanmelden.html" style="padding: 12px 20px; background: #F2A33A; color: #121214; font-weight: 700; font-size: 14px">Gratis kennismaking</a>
+  </div>
+</header>
+
+<section style="padding: 88px 56px 40px; display: flex; flex-direction: column; gap: 28px; align-items: center; text-align: center">
+  <p class="lbl" style="color: #F2A33A">De studio</p>
+  <h1 class="serif" style="margin: 0; font-size: 84px; line-height: 1; max-width: 900px; text-wrap: balance">Kijk even binnen.</h1>
+  <p style="margin: 0; font-size: 20px; line-height: 1.55; color: #C9C9CF; max-width: 600px">Geen spiegelwand, geen harde muziek, geen rij voor het rek. Een zaal voor zes mensen, een trainer en alles wat je nodig hebt.</p>
+</section>
+
+<section style="padding: 24px 56px 0; display: flex; flex-direction: column; gap: 16px">
+  <div style="display: flex; gap: 12px; overflow-x: auto; padding-bottom: 4px">
+    <div class="ph" style="flex: 0 0 72%; min-width: 320px; height: 620px">[Slide 1: de zaal, breed, warm licht]</div>
+    <div class="ph" style="flex: 0 0 40%; min-width: 280px; height: 620px">[Slide 2: de groep rond het rek]</div>
+    <div class="ph" style="flex: 0 0 40%; min-width: 280px; height: 620px">[Slide 3: de kleedruimte]</div>
+  </div>
+  <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap">
+    <p class="serif" style="margin: 0; font-size: 24px; color: #C9C9CF; font-weight: 500">De zaal, een kwartier voor de groep van 18:00.</p>
+    <div style="display: flex; gap: 8px; align-items: center">
+      <span style="width: 24px; height: 2px; background: #F2A33A"></span><span style="width: 8px; height: 2px; background: #3A3A41"></span><span style="width: 8px; height: 2px; background: #3A3A41"></span>
+      <button aria-label="Vorige" style="margin-left: 12px; width: 44px; height: 44px; background: none; border: 1px solid #3A3A41; color: #F4F4F2; cursor: pointer">‹</button>
+      <button aria-label="Volgende" style="width: 44px; height: 44px; background: none; border: 1px solid #3A3A41; color: #F4F4F2; cursor: pointer">›</button>
+    </div>
+  </div>
+</section>
+
+<a id="kennismaking" href="aanmelden.html" style="position: absolute; right: 0; top: 900px; display: flex; align-items: center; gap: 10px; padding: 16px 22px 16px 24px; background: #F2A33A; color: #121214; font-weight: 700; font-size: 15px; box-shadow: 0 8px 30px rgba(0,0,0,0.45)">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>Gratis kennismaking
+</a>
+
+<section style="padding: 112px 56px 0; display: flex; flex-direction: column; gap: 28px">
+  <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap">
+    <h2 class="serif" style="margin: 0; font-size: 56px; line-height: 1.05">Alle foto's</h2>
+    <div style="display: flex; gap: 8px; flex-wrap: wrap">
+      <button class="chip" style="background: #F2A33A; color: #121214; border-color: #F2A33A">Alles</button><button class="chip">De zaal</button><button class="chip">Een sessie</button><button class="chip">De mensen</button><button class="chip">1-op-1</button>
+    </div>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); grid-auto-rows: 260px; gap: 12px">
+    <div class="ph" style="grid-row: span 2">[De zaal · staand]</div>
+    <div class="ph">[Een sessie · techniek]</div>
+    <div class="ph">[De mensen · napraten]</div>
+    <div class="ph" style="grid-column: span 2">[De zaal · breed]</div>
+    <div class="ph">[1-op-1 · deadlift]</div>
+    <div class="ph">[De mensen · groep ma 18:00]</div>
+    <div class="ph" style="grid-row: span 2">[Een sessie · staand]</div>
+    <div class="ph">[De zaal · detail: krijt en bank]</div>
+    <div class="ph">[De mensen · trainer en lid]</div>
+    <div class="ph" style="grid-column: span 2">[Een sessie · het zware blok]</div>
+  </div>
+  <p style="margin: 0; font-size: 14px; color: #8E8E96">Klik op een foto voor een groter beeld. Alle foto's zijn van onze eigen leden en trainers, met toestemming.</p>
+</section>
+
+<section style="padding: 112px 56px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr)); gap: 1px; background: #26262B; border: 1px solid #26262B; margin: 112px 56px 0">
+  <div style="background: #121214; padding: 40px; display: flex; flex-direction: column; gap: 14px">
+    <p class="lbl" style="color: #F2A33A">Adres</p>
+    <p class="serif" style="margin: 0; font-size: 32px; line-height: 1.1">[Straat en nummer]<br>[Postcode] [STAD]</p>
+    <p style="margin: 0; color: #C9C9CF; line-height: 1.6">[Parkeren / fietsenstalling / OV in één zin.]</p>
+  </div>
+  <div style="background: #121214; padding: 40px; display: flex; flex-direction: column; gap: 14px">
+    <p class="lbl" style="color: #F2A33A">Trainingstijden</p>
+    <p class="serif" style="margin: 0; font-size: 32px; line-height: 1.1">Ma – vr 07:00 – 20:30<br>Za 09:00 – 13:00</p>
+    <p style="margin: 0; color: #C9C9CF; line-height: 1.6">Alleen op afspraak. Buiten de groepsuren is de zaal open voor 1-op-1.</p>
+  </div>
+  <div style="background: #121214; padding: 40px; display: flex; flex-direction: column; gap: 14px; justify-content: space-between">
+    <div style="display: flex; flex-direction: column; gap: 14px">
+      <p class="lbl" style="color: #F2A33A">Zelf komen kijken?</p>
+      <p style="margin: 0; color: #C9C9CF; line-height: 1.6">Een foto zegt veel, de zaal zelf meer. Loop een uur mee tijdens de kennismaking.</p>
+    </div>
+    <a href="aanmelden.html" style="align-self: flex-start; padding: 16px 24px; background: #F2A33A; color: #121214; font-weight: 700">Plan je gratis kennismaking</a>
+  </div>
+</section>
+
+<footer style="margin-top: auto; padding: 96px 56px 40px; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; color: #8E8E96; font-size: 14px">
+  <span>Gym · [Adres], [STAD] · [Telefoon]</span>
+  <div style="display: flex; gap: 24px"><a href="#kennismaking">Instagram</a><a href="#kennismaking">Privacy</a><a href="#kennismaking">Voorwaarden</a></div>
+</footer>
+</div>
+</body>
+</html>

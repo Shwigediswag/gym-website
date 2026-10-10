@@ -1,0 +1,5 @@
+symfonycasts_tailwind:
+    # Tailwind v4, CSS-first config; tokens are imported from assets/styles/design-tokens.css
+    input_css:
+        - 'assets/styles/app.css'
+    binary_version: 'v4.1.14'

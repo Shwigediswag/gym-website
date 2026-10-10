@@ -1,0 +1,24 @@
+framework:
+    secret: '%env(APP_SECRET)%'
+    default_locale: '%app.default_locale%'
+    enabled_locales: ['nl', 'en']
+    http_method_override: false
+    handle_all_throwables: true
+
+    session:
+        cookie_secure: auto
+        cookie_samesite: lax
+        name: GYMSESSID
+
+    rate_limiter:
+        # HANDOFF §4.4: intake form, honeypot + rate limit, no captcha.
+        intake_form:
+            policy: sliding_window
+            limit: 5
+            interval: '1 hour'
+
+when@test:
+    framework:
+        test: true
+        session:
+            storage_factory_id: session.storage.factory.mock_file
