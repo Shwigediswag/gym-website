@@ -1,0 +1,6 @@
+{# Ui:Option — checkbox/radio as a bordered row. The real input stays the source of truth; selection is styled with :has(). #}
+{% props type = 'checkbox', name, value = '1', checked = false, disabled = false %}
+<label {{ attributes.defaults({class: 'flex items-center gap-2.5 px-3.5 py-3 min-h-input border border-control text-ui cursor-pointer transition-colors has-checked:border-accent has-focus-visible:outline-2 has-focus-visible:outline-accent has-disabled:opacity-40 has-disabled:cursor-not-allowed'}) }}>
+    <input type="{{ type }}" name="{{ name }}" value="{{ value }}" class="m-0 shrink-0 focus-visible:outline-none"{{ checked ? ' checked' }}{{ disabled ? ' disabled' }}>
+    <span>{% block content %}{% endblock %}</span>
+</label>

@@ -1,0 +1,18 @@
+{# Ui:Button — amber primary / 1px outline / text ghost. Renders <a> when href is given, otherwise <button>. #}
+{% props variant = 'primary', size = 'md', href = null, type = 'button' %}
+{%- set variants = {
+    primary: 'btn-primary text-center transition-opacity hover:opacity-90',
+    outline: 'btn-outline text-center transition-colors hover:border-accent hover:text-accent',
+    ghost: 'inline-flex items-center gap-2 min-h-touch font-semibold text-accent cursor-pointer',
+} -%}
+{%- set sizes = {
+    sm: 'px-[18px] py-3 text-small',
+    md: '',
+    lg: 'px-8 py-[18px]',
+} -%}
+{%- set classes = variants[variant] ~ ' ' ~ sizes[size] -%}
+{% if href %}
+<a href="{{ href }}" {{ attributes.defaults({class: classes}) }}>{% block content %}{% endblock %}</a>
+{% else %}
+<button type="{{ type }}" {{ attributes.defaults({class: classes}) }}>{{ block('content') }}</button>
+{% endif %}

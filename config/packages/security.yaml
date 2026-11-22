@@ -29,7 +29,8 @@ security:
 
     access_control:
         - { path: ^/(en/)?admin, roles: ROLE_ADMIN }
-        - { path: ^/(mijn|en/my)(/|$), roles: ROLE_MEMBER }
+        # STATIC FRONT-END: the portal is public until the login page exists (PLANNING 1.2). Re-enable then:
+        # - { path: ^/(mijn|en/my)(/|$), roles: ROLE_MEMBER }
 
 when@test:
     security:

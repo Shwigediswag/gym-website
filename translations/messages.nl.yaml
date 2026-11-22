@@ -1,4 +1,5 @@
-# Gym — Nederlands (default). Copy letterlijk uit HANDOFF.md; toon: warm, direct, je/jij.
+# Gym — Nederlands (default). Copy letterlijk uit HANDOFF.md en reference-html/; toon: warm, direct, je/jij.
+# Waarden tussen [blokhaken] zijn placeholders van de opdrachtgever (HANDOFF §11): nooit zelf invullen.
 site:
     name: Gym
     tagline: 'Op afspraak. Op naam.'
@@ -6,15 +7,36 @@ site:
 a11y:
     skip_to_content: 'Ga naar de inhoud'
 
+common:
+    cta_intro: 'Gratis kennismaking'
+    cta_plan: 'Gratis kennismaking plannen'
+    cta_plan_yours: 'Plan je gratis kennismaking'
+    price_placeholder: '[PRIJS]'
+    prev: 'Vorige'
+    next: 'Volgende'
+    close: 'Sluiten'
+    menu: 'Menu'
+
 nav:
+    main: 'Hoofdnavigatie'
+    home_label: 'Gym home'
     story: 'Ons verhaal'
     training: 'Trainen'
     trainers: 'Trainers'
+    studio: 'De studio'
     experiences: 'Ervaringen'
     login: 'Inloggen'
     logout: 'Uitloggen'
-    intro: 'Gratis kennismaking'
     language: 'Taal'
+
+footer:
+    instagram: 'Instagram'
+    privacy: 'Privacy'
+    terms: 'Voorwaarden'
+
+days:
+    short: { mon: 'Ma', tue: 'Di', wed: 'Wo', thu: 'Do', fri: 'Vr', sat: 'Za' }
+    long: { mon: 'Maandag', tue: 'Dinsdag', wed: 'Woensdag', thu: 'Donderdag', fri: 'Vrijdag', sat: 'Zaterdag' }
 
 brand:
     no_pass: 'Geen pasje. Een afspraak.'
@@ -22,19 +44,260 @@ brand:
     coffee: 'Kom eerst een kop koffie drinken.'
     about_heading: 'Je trainer kent je, en je rechterknie.'
 
+trainers:
+    name_placeholder: '[Naam]'
+    portrait: '[Portret trainer %n%]'
+    bio_placeholder: '[Korte bio: achtergrond, opleiding, waarom je bij Gym bent, en één ding dat leden over je zeggen. Vier zinnen.]'
+    t1:
+        spec: 'Kracht & mobiliteit'
+        days: 'ma, wo, vr'
+        quote: 'Ik begin elke sessie met een vraag, niet met een oefening.'
+    t2:
+        spec: 'Conditie & herstel'
+        days: 'di, do, za'
+        quote: 'Vooruitgang is persoonlijk. Vergelijk je met vorige maand, niet met de buurman.'
+    t3:
+        spec: 'Blessurevrij trainen'
+        days: 'ma, do, za'
+
 home:
     hero:
         label: 'Small group & personal training · %city%'
         intro: 'Gym is een kleine trainingsstudio. Je boekt een vast uur, traint in een groep van maximaal %max% en hebt één trainer die je echt leert kennen. Of 1-op-1, als je dat liever hebt.'
-        cta_primary: 'Plan je gratis kennismaking'
         cta_secondary: 'Bekijk het aanbod'
+    slider:
+        slide1: '[Hero-slide 1: trainer en groep, close en persoonlijk]'
+        slide2: '[Hero-slide 2: 1-op-1 sessie]'
+        slide3: '[Hero-slide 3: de studio]'
+        caption: 'Maandag 18:00 — Sam, Lotte, Rik, Maud, Tom en jij.'
     story:
-        heading: 'Geen pasje. Een afspraak.'
-        p1: 'Je boekt een uur, je trainer weet dat je komt, en je mede-trainees ook. Zo simpel is het.'
+        heading_1: 'Geen pasje.'
+        heading_2: 'Een afspraak.'
+        p1: 'Bij een gewone sportschool loop je binnen wanneer je wilt, en loopt niemand met je mee. Bij Gym is het andersom: je legt je uren vast — voor een week, of voor de rest van het seizoen — en wij zorgen dat op dat uur jouw groep en jouw trainer er zijn.'
+        p2: 'Je traint met dezelfde [vijf] mensen. Je trainer weet dat je nek gevoelig is en dat je dinsdag altijd moe binnenkomt. Dat is geen extraatje, dat is het hele idee.'
         link: 'Lees ons verhaal'
+    offer:
+        group:
+            photo: '[Foto: small group]'
+            title: 'Small group'
+            text: 'Max. %max% personen, een vaste groep, een vaste trainer. 60 minuten.'
+            price: 'vanaf %price% / maand'
+        one:
+            photo: '[Foto: 1-op-1]'
+            title: '1-op-1'
+            text: 'Alleen jij en je trainer, op een moment dat jou uitkomt. Ook naast je groepstraining.'
+            price: 'vanaf %price% / sessie'
+        fixed:
+            photo: '[Foto: agenda / vaste tijden]'
+            title: 'Vaste tijden'
+            text: 'Leg je uren voor langere tijd vast en je plek is gegarandeerd. Verhinderd? Afmelden tot %hours% uur van tevoren.'
+            price: 'inbegrepen'
+    trainers:
+        heading: 'Maak kennis met je trainers'
+        intro: 'Je kiest je trainer al bij de kennismaking. Daarna blijft het dezelfde.'
+    testimonials:
+        label: 'Wat leden zeggen'
+        quote_placeholder: '[Quote van een lid over de groep of de trainer — uit een echt gesprek, niet verzonnen.]'
+        author_placeholder: '[Voornaam], lid sinds [maand]'
+    cta:
+        text: 'Een half uur, zonder verplichting. We bekijken samen welke groep bij je past.'
 
-foundation:
-    notice: 'Fundament-pagina. De echte pagina’s worden gebouwd met de paginabouwer.'
+about:
+    title: 'Over ons'
+    label: 'Over ons'
+    intro: 'Gym is begonnen uit ergernis over anonieme sportscholen. We wilden een plek waar je trainer weet wie je bent, waar je groep op je wacht, en waar je rechterknie net zo serieus genomen wordt als je doel.'
+    founder:
+        photo: '[Foto: oprichter(s) in de studio, ontspannen portret]'
+        heading: 'Waarom we Gym begonnen'
+        p1_placeholder: '[Verhaal van de oprichter: wie je bent, hoe lang je trainer bent, wat je zag misgaan in grote sportscholen, en het moment waarop je besloot het anders te doen. Twee alinea''s, in de ik-vorm.]'
+        p2_placeholder: '[Tweede alinea: hoe de studio in %city% tot stand kwam, wanneer de deuren opengaan en wat je hoopt dat leden hier vinden.]'
+        signature_placeholder: '[Naam oprichter]'
+    beliefs:
+        label: 'Waar we in geloven'
+        heading: 'Drie dingen die we nooit loslaten'
+        b1:
+            title: 'Op afspraak, nooit op inloop'
+            text: 'Elk uur is gepland, elke plek is van iemand. Zo weet je trainer precies wie er komt en kan de sessie worden voorbereid op jou.'
+        b2:
+            title: 'Maximaal %max%, altijd dezelfde'
+            text: 'Een groep is pas een groep als je elkaar kent. Daarom wisselen we niet elke week, en zien we het als je een keer ontbreekt.'
+        b3:
+            title: 'Eén trainer, voor de lange termijn'
+            text: 'Vooruitgang is persoonlijk en traag. Dat volg je alleen als dezelfde persoon je maanden achter elkaar ziet.'
+    team:
+        heading: 'De trainers'
+        intro: 'Je kiest je trainer bij de kennismaking en daarna blijft het dezelfde. Dit zijn ze.'
+    cta:
+        heading: 'Kom kennismaken. Met ons, en met je groep.'
+        text: 'Een half uur in de studio, gratis en zonder verplichting.'
+
+studio:
+    title: 'De studio'
+    label: 'De studio'
+    heading: 'Kijk even binnen.'
+    intro: 'Geen spiegelwand, geen harde muziek, geen rij voor het rek. Een zaal voor zes mensen, een trainer en alles wat je nodig hebt.'
+    slider:
+        slide1: '[Slide 1: de zaal, breed, warm licht]'
+        slide2: '[Slide 2: de groep rond het rek]'
+        slide3: '[Slide 3: de kleedruimte]'
+        caption: 'De zaal, een kwartier voor de groep van 18:00.'
+    gallery:
+        heading: 'Alle foto''s'
+        enlarge: 'Vergroot foto: %label%'
+        note: 'Klik op een foto voor een groter beeld. Alle foto''s zijn van onze eigen leden en trainers, met toestemming.'
+        filter:
+            label: 'Filter foto''s'
+            all: 'Alles'
+            room: 'De zaal'
+            session: 'Een sessie'
+            people: 'De mensen'
+            one_on_one: '1-op-1'
+        photo1: '[De zaal · staand]'
+        photo2: '[Een sessie · techniek]'
+        photo3: '[De mensen · napraten]'
+        photo4: '[De zaal · breed]'
+        photo5: '[1-op-1 · deadlift]'
+        photo6: '[De mensen · groep ma 18:00]'
+        photo7: '[Een sessie · staand]'
+        photo8: '[De zaal · detail: krijt en bank]'
+        photo9: '[De mensen · trainer en lid]'
+        photo10: '[Een sessie · het zware blok]'
+    practical:
+        address_label: 'Adres'
+        address_note_placeholder: '[Parkeren / fietsenstalling / OV in één zin.]'
+        hours_label: 'Trainingstijden'
+        hours_note: 'Alleen op afspraak. Buiten de groepsuren is de zaal open voor 1-op-1.'
+        visit_label: 'Zelf komen kijken?'
+        visit_text: 'Een foto zegt veel, de zaal zelf meer. Loop een uur mee tijdens de kennismaking.'
+
+signup:
+    title: 'Aanmelden voor een gratis kennismaking'
+    heading: 'Vertel ons wie je bent. Wij regelen de rest.'
+    intro: 'Vul dit in, en binnen één werkdag belt %name% je om een moment te prikken. De kennismaking duurt een half uur, is gratis en verplicht je tot niets.'
+    photo: '[Foto: trainer aan de deur, verwelkomend]'
+    progress: 'Stap %n% van 3'
+    steps:
+        s1:
+            title: 'Je vult dit formulier in'
+            text: 'Twee minuten, geen account nodig.'
+        s2:
+            title: 'We bellen je voor een afspraak'
+            text: 'Binnen één werkdag, op het moment dat jij aangeeft.'
+        s3:
+            title: 'Je komt een uur meekijken'
+            text: 'Je ontmoet je trainer en ziet een groep in actie.'
+    s1:
+        legend: 'Jouw gegevens'
+        first_name: 'Voornaam'
+        last_name: 'Achternaam'
+        email: 'E-mail'
+        email_placeholder: 'naam@voorbeeld.nl'
+        phone: 'Telefoon'
+    s2:
+        legend: 'Wat wil je bereiken?'
+        hint: 'Kies alles wat past. Dit helpt ons bij het kiezen van je groep en trainer.'
+        goals:
+            stronger: 'Sterker worden'
+            fitness: 'Betere conditie'
+            weight: 'Afvallen'
+            injury_free: 'Blessurevrij bewegen'
+            energy: 'Meer energie in de week'
+            rhythm: 'Gewoon weer in een ritme komen'
+        experience: 'Hoe vaak train je nu?'
+        levels:
+            rarely: 'Zelden of nooit'
+            sometimes: 'Af en toe'
+            regularly: 'Regelmatig'
+        injuries: 'Iets wat je trainer moet weten? (blessures, je rechterknie, een operatie)'
+        injuries_placeholder: 'Bijvoorbeeld: mijn rechterknie is sinds vorig jaar gevoelig bij diepe squats.'
+    s3:
+        legend: 'Wanneer kun je?'
+        hint: 'Vink de dagdelen aan die meestal lukken. We zoeken daar een groep bij.'
+        dayparts:
+            morning: 'Ochtend'
+            afternoon: 'Middag'
+            evening: 'Avond'
+        format: 'Waar denk je aan?'
+        formats:
+            group: 'Small group (max. %max%)'
+            one_on_one: '1-op-1'
+            unknown: 'Weet ik nog niet'
+        call: 'Wanneer kunnen we je het beste bellen?'
+        call_placeholder: 'Bijvoorbeeld: doordeweeks na 17:00'
+    consent: 'We gebruiken je gegevens alleen om deze kennismaking te plannen. Zie onze'
+    consent_link: 'privacyverklaring'
+    submit: 'Verstuur en plan mijn kennismaking'
+    submit_note: 'Gratis · geen account nodig · we bellen binnen één werkdag'
+
+thanks:
+    title: 'Bedankt'
+    label: 'Aanmelding ontvangen'
+    heading: 'We bellen je binnen één werkdag.'
+    text: 'Dan prikken we samen een moment voor je kennismaking. Een half uur, gratis, en je zit nergens aan vast.'
+    cta_studio: 'Kijk alvast binnen'
+    cta_about: 'Lees ons verhaal'
+
+portal:
+    greeting: 'Hoi, %name%'
+    group_of: 'groep van %trainer%'
+    full: 'vol'
+    nav:
+        label: 'Ledenportaal'
+        booking: 'Boeken'
+        sessions: 'Mijn sessies'
+        sessions_short: 'Sessies'
+        group: 'Mijn groep'
+        group_short: 'Groep'
+        progress: 'Voortgang'
+        profile: 'Profiel'
+    type:
+        group: 'Small group'
+        one_on_one: '1-op-1'
+    booking:
+        heading: 'Boeken'
+        intro: 'Leg vaste tijden vast, boek een losse dag of plan een 1-op-1.'
+        tabs:
+            fixed: 'Vaste tijden'
+            single: 'Losse dag'
+            one_on_one: '1-op-1'
+    fixed:
+        current: 'huidige: ma + do 18:00 t/m 31 dec'
+        step_days: 'Kies je dagen'
+        step_time: 'Kies je uur'
+        available_on: 'beschikbaar op ma + do'
+        step_duration: 'Voor hoe lang?'
+        duration:
+            weeks: '4 weken'
+            until: 'Tot 31 december'
+            open: 'Tot ik opzeg'
+        summary: 'Ma + Do · 18:00 · groep van Sam'
+        summary_meta: '22 sessies · 12 okt t/m 31 dec · %price% / maand'
+        confirm: 'Vaste tijden bevestigen'
+    single:
+        label: 'Losse dag boeken'
+        hint: 'een extra sessie of een inhaalles, buiten je vaste uren'
+        week: 'week %n%'
+        pick_day: 'Kies een dag'
+        prev_week: 'Vorige week'
+        next_week: 'Volgende week'
+        of: '%n% van %max%'
+        free: 'nog vrij'
+        book: 'Boek deze plek'
+        book_short: 'Boek'
+        book_one: 'Boek 1-op-1'
+        waitlist: 'Wachtlijst'
+    group:
+        label: 'Jouw groep'
+        trainer_meta: 'Trainer · kracht'
+        message: 'Bericht aan de groep'
+    upcoming:
+        label: 'Komende sessies'
+        group: 'Groep'
+        d1: 'Ma 12 okt · 18:00'
+        d2: 'Wo 14 okt · 12:00'
+        d3: 'Do 15 okt · 18:00'
+        cancel: 'Afmelden'
+        note: 'Afmelden kan tot %hours% uur van tevoren.'
 
 form:
     required: 'Verplicht'

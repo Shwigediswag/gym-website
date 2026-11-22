@@ -35,6 +35,27 @@ No portal, no scheduling, no billing.
 - [x] Foundry fixtures + PHPUnit + Panther baseline; CI script (`make test` runs phpunit, lint:twig, lint:container, phpstan level 6).
 - [x] `SiteSetting` entity (key/value, translatable) seeded with every `[PLACEHOLDER]` from HANDOFF §11 as TODO values.
 
+### 1.0 Static front-end pass (done 2026-11-22, inserted before 1.2)
+
+Order changed on request: all pages were first built as a **static front-end** inside the Symfony app, so the design
+can be judged before deciding how content pages/blocks are implemented.
+
+- [x] Pages as Twig templates, copy in `translations/messages.{nl,en}.yaml`: Homepage, Over ons, De studio, Aanmelden,
+      Bedankt, Ledenportaal – Boeken. Localized slugs (`/over-ons` ↔ `/en/about`, …) in `PageController` / `BookingController`.
+- [x] Components: `Ui:` Button, Label, Logo, Icon, ImagePlaceholder, Indicator, Avatar, Option, Chip, Field ·
+      `Site:` Header (+ mobile menu), Footer, LocaleSwitch, StickyCta, Slider, CtaFrame · layouts `site` and `portal`.
+- [x] Stimulus: `slider`, `sticky-cta`, `mobile-menu`, `gallery` (filter), `lightbox`, `form-progress`.
+      Chips, option rows and the availability grid are real inputs styled with `:has()`, no JS.
+- [x] Every `<section>` in a page template is one future block (see catalogue in 1.5).
+
+Static-only shortcuts to undo later (all marked `STATIC FRONT-END` / `TODO` in code):
+- Sign-up POST is accepted and discarded, then redirects to the thank-you page (real handling: 1.8).
+- The portal route is public; the `ROLE_MEMBER` access rule in `security.yaml` is commented out until login exists (1.2).
+- Trainers, testimonials, gallery photos and portal data are placeholders/sample data from the design reference.
+- Header nav is unified on all pages: Ons verhaal · Trainen · Trainers · De studio (the reference home used "Ervaringen" as 4th item).
+
+**Open decision:** how the content pages/blocks are implemented in Symfony (block page builder per 1.5, or simpler).
+
 ### 1.2 Security & admin shell
 
 - [ ] `User` entity (email, password, roles, locale, isActive), roles `ROLE_MEMBER`, `ROLE_TRAINER`, `ROLE_ADMIN`, `ROLE_SUPER_ADMIN`.

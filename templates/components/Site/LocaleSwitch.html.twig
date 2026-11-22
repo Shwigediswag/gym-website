@@ -1,0 +1,8 @@
+{# Site:LocaleSwitch — NL/EN links to the same page in the other locale. #}
+{%- set route = app.request.attributes.get('_canonical_route') ?? app.request.attributes.get('_route') ?? 'marketing_home' -%}
+{%- set params = app.request.attributes.get('_route_params')|default({}) -%}
+<nav aria-label="{{ 'nav.language'|trans }}" {{ attributes.defaults({class: 'flex gap-4'}) }}>
+    {% for locale in app_locales %}
+        <a href="{{ path(route, params|merge({_locale: locale})) }}" hreflang="{{ locale }}" lang="{{ locale }}" class="label-caps inline-flex items-center min-h-touch {{ locale == app.request.locale ? 'text-accent' : 'text-ink-soft' }}"{% if locale == app.request.locale %} aria-current="true"{% endif %}>{{ locale|upper }}</a>
+    {% endfor %}
+</nav>

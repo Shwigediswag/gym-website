@@ -1,0 +1,7 @@
+{# Ui:Indicator — dash indicator for sliders. Pass target="slider" to let the slider controller drive it. #}
+{% props count = 3, active = 0, target = null %}
+<div aria-hidden="true" {{ attributes.defaults({class: 'flex items-center gap-1.5 md:gap-2'}) }}>
+    {% for i in 0..(count - 1) %}
+        <span {% if target %}data-{{ target }}-target="dot"{% endif %} data-active="{{ i == active ? 'true' : 'false' }}" class="h-0.5 w-1.5 md:w-2 bg-control transition-all duration-base data-[active=true]:w-5 md:data-[active=true]:w-6 data-[active=true]:bg-accent"></span>
+    {% endfor %}
+</div>

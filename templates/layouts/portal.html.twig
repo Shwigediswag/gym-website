@@ -1,0 +1,54 @@
+{# Member portal shell: desktop left sidebar, mobile header + bottom tab bar (HANDOFF §4.5).
+   Child templates may set portal_current (booking|sessions|group|progress|profile).
+   STATIC FRONT-END: member name, initials and trainer are placeholders until the portal is wired to real data. #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{%- set current = portal_current|default('booking') -%}
+{%- set items = [
+    {key: 'booking', label: 'portal.nav.booking'|trans, short: 'portal.nav.booking'|trans, icon: 'calendar', href: path('portal_booking')},
+    {key: 'sessions', label: 'portal.nav.sessions'|trans, short: 'portal.nav.sessions_short'|trans, icon: 'clock', href: path('portal_booking') ~ '#komend'},
+    {key: 'group', label: 'portal.nav.group'|trans, short: 'portal.nav.group_short'|trans, icon: 'group', href: path('portal_booking') ~ '#groep'},
+    {key: 'progress', label: 'portal.nav.progress'|trans, short: null, icon: null, href: path('portal_booking') ~ '#komend'},
+    {key: 'profile', label: 'portal.nav.profile'|trans, short: 'portal.nav.profile'|trans, icon: 'user', href: path('portal_booking') ~ '#komend'},
+] -%}
+<div class="min-h-screen lg:flex">
+    <aside class="hidden lg:flex sticky top-0 h-screen w-60 shrink-0 flex-col gap-7 px-5 py-6 border-r border-line">
+        <twig:Ui:Logo size="portal" class="px-2.5" />
+        <nav aria-label="{{ 'portal.nav.label'|trans }}" class="flex flex-col gap-0.5 text-ui font-medium">
+            {% for item in items %}
+                <a href="{{ item.href }}" class="px-3.5 py-3 border-l-2 {{ current == item.key ? 'border-accent bg-accent-tint text-accent' : 'border-transparent' }}"{% if current == item.key %} aria-current="page"{% endif %}>{{ item.label }}</a>
+            {% endfor %}
+        </nav>
+        <div class="mt-auto flex items-center gap-2.5 px-2.5 text-small">
+            <twig:Ui:Avatar initials="[JD]" class="border-raised" />
+            <div class="flex flex-col">
+                <strong>[Voornaam]</strong>
+                <span class="text-[12px] text-ink-mute">{{ 'portal.group_of'|trans({'%trainer%': 'Sam'}) }}</span>
+            </div>
+        </div>
+    </aside>
+
+    <div class="flex min-w-0 flex-1 flex-col">
+        <header class="lg:hidden flex items-center justify-between gap-3 px-gutter-m py-4 border-b border-line">
+            <twig:Ui:Logo size="sm" />
+            <div class="flex items-center gap-2 text-small text-ink-soft">
+                <span>{{ 'portal.greeting'|trans({'%name%': '[Voornaam]'}) }}</span>
+                <twig:Ui:Avatar initials="[JD]" size="sm" class="border-raised" />
+            </div>
+        </header>
+
+        <main id="main" class="flex flex-col gap-6 lg:gap-7 px-gutter-m lg:px-10 pt-6 lg:pt-9 pb-[120px] lg:pb-9">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+    <nav aria-label="{{ 'portal.nav.label'|trans }}" class="lg:hidden fixed inset-x-0 bottom-0 z-40 flex bg-deep border-t border-line pb-3.5">
+        {% for item in items|filter(i => i.icon) %}
+            <a href="{{ item.href }}" class="flex flex-1 flex-col items-center gap-1 py-2.5 text-[11px] font-semibold {{ current == item.key ? 'text-accent' : 'text-ink-mute' }}"{% if current == item.key %} aria-current="page"{% endif %}>
+                <twig:Ui:Icon name="{{ item.icon }}" size="22" />{{ item.short }}
+            </a>
+        {% endfor %}
+    </nav>
+</div>
+{% endblock %}

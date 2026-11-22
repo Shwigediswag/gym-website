@@ -1,0 +1,12 @@
+{# Site:Footer — address · phone · Instagram · Privacy · Terms · language switch. Values come from SiteSettings ([PLACEHOLDER]s until filled in). #}
+{% props bordered = false, clearSticky = true %}
+<footer {{ attributes.defaults({class: 'mt-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 lg:gap-6 px-gutter-m lg:px-gutter pt-12 lg:pt-14 text-[13px] lg:text-small text-ink-mute ' ~ (clearSticky ? 'pb-[120px] lg:pb-10' : 'pb-10') ~ (bordered ? ' border-t border-line' : '')}) }}>
+    <span>{{ 'site.name'|trans }} · {{ setting('studio.address') }}, {{ setting('studio.city') }} · {{ setting('studio.phone') }}</span>
+    <div class="flex flex-wrap items-center gap-x-5 lg:gap-x-6 gap-y-1">
+        {# TODO: real Instagram URL (SiteSetting studio.instagram) and Privacy/Terms pages (PLANNING §1.7). #}
+        <a href="{{ setting_is_placeholder('studio.instagram') ? '#' : setting('studio.instagram') }}" class="inline-flex items-center min-h-touch">{{ 'footer.instagram'|trans }}</a>
+        <a href="#" class="inline-flex items-center min-h-touch">{{ 'footer.privacy'|trans }}</a>
+        <a href="#" class="inline-flex items-center min-h-touch">{{ 'footer.terms'|trans }}</a>
+        <twig:Site:LocaleSwitch />
+    </div>
+</footer>

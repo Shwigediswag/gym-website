@@ -1,0 +1,9 @@
+{# Site:CtaFrame — the 1px amber framed call to action that closes a page. #}
+{% props heading, text = '', button = null, href = null %}
+<section data-sticky-cta-hide {{ attributes.defaults({class: 'mx-gutter-m lg:mx-gutter flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 lg:gap-8 px-6 py-8 lg:p-[72px] border border-accent'}) }}>
+    <div class="flex flex-col gap-2.5">
+        <h2 class="m-0 font-display text-[34px] lg:text-display-md leading-[1.05]">{{ heading }}</h2>
+        {% if text %}<p class="m-0 text-ui lg:text-[18px] leading-normal text-ink-soft">{{ text }}</p>{% endif %}
+    </div>
+    <twig:Ui:Button size="lg" href="{{ href ?? path('intake_new') }}" class="shrink-0 max-lg:py-4 max-lg:text-ui">{{ button ?? 'common.cta_plan'|trans }}</twig:Ui:Button>
+</section>

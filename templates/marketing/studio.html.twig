@@ -1,0 +1,99 @@
+{# De studio (HANDOFF §4.3, reference-html/de-studio.html). STATIC FRONT-END: each <section> maps to a future page-builder block. #}
+{% extends 'layouts/site.html.twig' %}
+{% set nav_current = 'studio' %}
+
+{% block title %}{{ 'studio.title'|trans }}{{ setting('seo.title_suffix') }}{% endblock %}
+
+{% block content %}
+{# ---- Hero ---- #}
+<section class="flex flex-col items-center gap-5 lg:gap-7 px-gutter-m lg:px-gutter pt-12 lg:pt-[88px] pb-6 lg:pb-10 text-center">
+    <twig:Ui:Label>{{ 'studio.label'|trans }}</twig:Ui:Label>
+    <h1 class="m-0 max-w-[900px] font-display text-display-xl-m lg:text-[84px] leading-none">{{ 'studio.heading'|trans }}</h1>
+    <p class="m-0 max-w-[600px] text-body lg:text-lead text-ink-soft">{{ 'studio.intro'|trans }}</p>
+</section>
+
+{# ---- Large slider ---- #}
+<section class="px-gutter-m lg:px-gutter pt-3 lg:pt-6">
+    <twig:Site:Slider
+        caption="{{ 'studio.slider.caption'|trans }}"
+        firstBasis="md:basis-[72%]"
+        height="h-[380px] md:h-[620px]"
+        :slides="['studio.slider.slide1'|trans, 'studio.slider.slide2'|trans, 'studio.slider.slide3'|trans]"
+    />
+</section>
+
+{# ---- Gallery with filter chips + lightbox ---- #}
+{%- set filters = [
+    {key: 'all', label: 'studio.gallery.filter.all'|trans},
+    {key: 'room', label: 'studio.gallery.filter.room'|trans},
+    {key: 'session', label: 'studio.gallery.filter.session'|trans},
+    {key: 'people', label: 'studio.gallery.filter.people'|trans},
+    {key: 'one_on_one', label: 'studio.gallery.filter.one_on_one'|trans},
+] -%}
+{# TODO: photos come from GalleryImage (category, span, consentConfirmed) once the admin exists. #}
+{%- set photos = [
+    {cat: 'room', span: 'tall'}, {cat: 'session', span: ''}, {cat: 'people', span: ''}, {cat: 'room', span: 'wide'},
+    {cat: 'one_on_one', span: ''}, {cat: 'people', span: ''}, {cat: 'session', span: 'tall'}, {cat: 'room', span: ''},
+    {cat: 'people', span: ''}, {cat: 'session', span: 'wide'},
+] -%}
+<section data-controller="gallery lightbox" class="flex flex-col gap-5 lg:gap-7 px-gutter-m lg:px-gutter pt-14 lg:pt-28">
+    <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-6">
+        <h2 class="m-0 font-display text-display-lg-m lg:text-display-lg leading-[1.05]">{{ 'studio.gallery.heading'|trans }}</h2>
+        <div role="group" aria-label="{{ 'studio.gallery.filter.label'|trans }}" class="flex flex-wrap gap-2">
+            {% for filter in filters %}
+                <twig:Ui:Chip type="button" :pressed="loop.first" data-gallery-target="filter" data-category="{{ filter.key }}" data-action="gallery#filter" class="px-4 py-2.5">{{ filter.label }}</twig:Ui:Chip>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="grid grid-flow-dense auto-rows-[220px] grid-cols-1 gap-3 sm:grid-cols-2 lg:auto-rows-[260px] lg:grid-cols-4">
+        {% for photo in photos %}
+            {%- set label = ('studio.gallery.photo' ~ loop.index)|trans -%}
+            <button type="button" data-gallery-target="item" data-lightbox-target="item" data-category="{{ photo.cat }}" data-label="{{ label }}" data-action="lightbox#open" aria-label="{{ 'studio.gallery.enlarge'|trans({'%label%': label}) }}" class="group relative m-0 cursor-zoom-in border-0 bg-transparent p-0 text-left {{ photo.span == 'tall' ? 'sm:row-span-2' : '' }} {{ photo.span == 'wide' ? 'sm:col-span-2' : '' }}">
+                <twig:Ui:ImagePlaceholder label="{{ label }}" class="size-full transition-colors group-hover:border-accent" />
+            </button>
+        {% endfor %}
+    </div>
+    <p class="m-0 text-small text-ink-mute">{{ 'studio.gallery.note'|trans }}</p>
+
+    <dialog data-lightbox-target="dialog" data-action="click->lightbox#backdrop keydown.left->lightbox#prev keydown.right->lightbox#next" aria-label="{{ 'studio.gallery.heading'|trans }}" class="m-0 size-full max-h-none max-w-none bg-ground/95 p-0 text-ink backdrop:bg-ground/80 open:flex open:flex-col">
+        <div class="flex items-center justify-between gap-4 px-gutter-m lg:px-gutter py-4">
+            <span data-lightbox-target="counter" class="label-caps text-ink-mute"></span>
+            <button type="button" aria-label="{{ 'common.close'|trans }}" data-action="lightbox#close" class="inline-flex size-touch items-center justify-center border border-control bg-transparent text-ink cursor-pointer hover:border-accent hover:text-accent">
+                <twig:Ui:Icon name="close" size="18" />
+            </button>
+        </div>
+        <div class="flex min-h-0 flex-1 items-stretch gap-3 px-gutter-m lg:px-gutter pb-4">
+            <button type="button" aria-label="{{ 'common.prev'|trans }}" data-action="lightbox#prev" class="hidden md:inline-flex size-touch shrink-0 self-center items-center justify-center border border-control bg-transparent text-ink cursor-pointer hover:border-accent hover:text-accent">
+                <twig:Ui:Icon name="chevron-left" size="18" />
+            </button>
+            {# With real photos this becomes an <img>; for now the enlarged placeholder. #}
+            <div data-lightbox-target="stage" role="img" class="image-placeholder min-w-0 flex-1 text-small"></div>
+            <button type="button" aria-label="{{ 'common.next'|trans }}" data-action="lightbox#next" class="hidden md:inline-flex size-touch shrink-0 self-center items-center justify-center border border-control bg-transparent text-ink cursor-pointer hover:border-accent hover:text-accent">
+                <twig:Ui:Icon name="chevron-right" size="18" />
+            </button>
+        </div>
+        <p data-lightbox-target="caption" class="m-0 px-gutter-m lg:px-gutter pb-6 font-display font-medium text-xl lg:text-2xl text-ink-soft"></p>
+    </dialog>
+</section>
+
+{# ---- Practical strip ---- #}
+<section class="mx-gutter-m lg:mx-gutter mt-14 lg:mt-28 hairline-grid lg:grid-cols-3">
+    <div class="hairline-cell flex flex-col gap-3.5 p-6 lg:p-10">
+        <twig:Ui:Label>{{ 'studio.practical.address_label'|trans }}</twig:Ui:Label>
+        <p class="m-0 font-display font-semibold text-[28px] lg:text-[32px] leading-[1.1]">{{ setting('studio.address')|nl2br }}<br>{{ setting('studio.city') }}</p>
+        <p class="m-0 leading-[1.6] text-ink-soft">{{ 'studio.practical.address_note_placeholder'|trans }}</p>
+    </div>
+    <div class="hairline-cell flex flex-col gap-3.5 p-6 lg:p-10">
+        <twig:Ui:Label>{{ 'studio.practical.hours_label'|trans }}</twig:Ui:Label>
+        <p class="m-0 font-display font-semibold text-[28px] lg:text-[32px] leading-[1.1]">{{ setting('studio.opening_hours', app.request.locale)|nl2br }}</p>
+        <p class="m-0 leading-[1.6] text-ink-soft">{{ 'studio.practical.hours_note'|trans }}</p>
+    </div>
+    <div data-sticky-cta-hide class="hairline-cell flex flex-col justify-between gap-5 p-6 lg:p-10">
+        <div class="flex flex-col gap-3.5">
+            <twig:Ui:Label>{{ 'studio.practical.visit_label'|trans }}</twig:Ui:Label>
+            <p class="m-0 leading-[1.6] text-ink-soft">{{ 'studio.practical.visit_text'|trans }}</p>
+        </div>
+        <twig:Ui:Button href="{{ path('intake_new') }}" class="self-start px-6">{{ 'common.cta_plan_yours'|trans }}</twig:Ui:Button>
+    </div>
+</section>
+{% endblock %}

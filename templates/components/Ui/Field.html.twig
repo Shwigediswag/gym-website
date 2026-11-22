@@ -1,0 +1,10 @@
+{# Ui:Field — label + 48px input or textarea, amber focus ring (from the base layer). #}
+{% props id, label, name = null, type = 'text', as = 'input', placeholder = '', rows = 3, autocomplete = null, required = false %}
+<div {{ attributes.defaults({class: 'flex flex-col gap-2'}) }}>
+    <label for="{{ id }}" class="text-small font-semibold text-ink-soft">{{ label }}</label>
+    {% if as == 'textarea' %}
+        <textarea id="{{ id }}" name="{{ name ?? id }}" rows="{{ rows }}" placeholder="{{ placeholder }}" class="input-field resize-y placeholder:text-ink-mute"{{ required ? ' required' }}></textarea>
+    {% else %}
+        <input id="{{ id }}" name="{{ name ?? id }}" type="{{ type }}" placeholder="{{ placeholder }}" class="input-field placeholder:text-ink-mute"{% if autocomplete %} autocomplete="{{ autocomplete }}"{% endif %}{{ required ? ' required' }}>
+    {% endif %}
+</div>

@@ -3,6 +3,10 @@ framework:
         # The paths to make available to the asset mapper.
         paths:
             - assets/
+        # Tailwind source partials: only inputs for assets/styles/app.css, never served on their own.
+        excluded_patterns:
+            - '*/assets/styles/design-tokens.css'
+            - '*/assets/styles/fonts.css'
         missing_import_mode: strict
 
 when@prod:

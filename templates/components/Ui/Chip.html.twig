@@ -1,0 +1,11 @@
+{# Ui:Chip — 44px selectable chip. type=checkbox|radio wraps a visually hidden input; type=button renders a toggle button (aria-pressed). #}
+{% props type = 'checkbox', name = null, value = '1', checked = false, disabled = false, pressed = false %}
+{%- set base = 'chip justify-center select-none transition-colors' -%}
+{% if type == 'button' %}
+<button type="button" aria-pressed="{{ pressed ? 'true' : 'false' }}" {{ attributes.defaults({class: base ~ ' bg-transparent text-ink aria-pressed:bg-accent aria-pressed:text-accent-ink aria-pressed:border-accent'}) }}>{% block content %}{% endblock %}</button>
+{% else %}
+<label {{ attributes.defaults({class: base ~ ' has-checked:bg-accent has-checked:text-accent-ink has-checked:border-accent has-focus-visible:outline-2 has-focus-visible:outline-accent has-disabled:opacity-45 has-disabled:cursor-not-allowed'}) }}>
+    <input type="{{ type }}" name="{{ name }}" value="{{ value }}" class="sr-only"{{ checked ? ' checked' }}{{ disabled ? ' disabled' }}>
+    {{ block('content') }}
+</label>
+{% endif %}

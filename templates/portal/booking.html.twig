@@ -1,0 +1,163 @@
+{# Ledenportaal — Boeken (HANDOFF §4.5, reference-html/portal-boeken.html + mobile-portal-boeken.html).
+   STATIC FRONT-END: all names, dates, slots and counts are the sample data from the design reference.
+   The wizard and day booking become Live Components (Portal:RecurringWizard, Portal:DayBooking) in a later phase. #}
+{% extends 'layouts/portal.html.twig' %}
+{% set portal_current = 'booking' %}
+
+{% block title %}{{ 'portal.booking.heading'|trans }}{{ setting('seo.title_suffix') }}{% endblock %}
+{% block seo %}<meta name="robots" content="noindex">{% endblock %}
+
+{% block content %}
+{%- set price = 'common.price_placeholder'|trans -%}
+{%- set days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat'] -%}
+
+{# ---- Heading + segmented control ---- #}
+<div class="flex flex-col gap-6 lg:flex-row lg:flex-wrap lg:items-end lg:justify-between lg:gap-4">
+    <div class="flex flex-col gap-1.5">
+        <h1 class="m-0 font-display text-display-lg-m lg:text-display-md leading-none">{{ 'portal.booking.heading'|trans }}</h1>
+        <p class="m-0 text-small lg:text-base text-ink-mute">{{ 'portal.booking.intro'|trans }}</p>
+    </div>
+    <nav aria-label="{{ 'portal.booking.heading'|trans }}" class="flex border border-control">
+        <a href="#vast" aria-current="true" class="flex flex-1 lg:flex-none items-center justify-center whitespace-nowrap min-h-touch px-2 lg:px-[18px] bg-accent text-accent-ink hover:text-accent-ink text-[13px] lg:text-base font-bold">{{ 'portal.booking.tabs.fixed'|trans }}</a>
+        <a href="#los" class="flex flex-1 lg:flex-none items-center justify-center whitespace-nowrap min-h-touch px-2 lg:px-[18px] border-l border-control text-[13px] lg:text-base font-semibold">{{ 'portal.booking.tabs.single'|trans }}</a>
+        <a href="#los" class="flex flex-1 lg:flex-none items-center justify-center whitespace-nowrap min-h-touch px-2 lg:px-[18px] border-l border-control text-[13px] lg:text-base font-semibold">{{ 'portal.booking.tabs.one_on_one'|trans }}</a>
+    </nav>
+</div>
+
+<div class="flex flex-col gap-6 xl:flex-row xl:items-start">
+    <div class="flex min-w-0 flex-1 flex-col gap-6">
+
+        {# ---- Fixed times wizard ---- #}
+        <section id="vast" class="flex scroll-mt-6 flex-col gap-[18px] lg:gap-6 border border-line bg-raised p-5 lg:p-7">
+            <div class="flex items-center justify-between gap-3">
+                <twig:Ui:Label as="h2">{{ 'portal.booking.tabs.fixed'|trans }}</twig:Ui:Label>
+                <span class="text-[12px] lg:text-[13px] text-ink-mute">{{ 'portal.fixed.current'|trans }}</span>
+            </div>
+
+            <fieldset class="m-0 flex min-w-0 flex-col gap-2.5 lg:gap-3 border-0 p-0">
+                <legend class="mb-2.5 lg:mb-3 p-0 text-ui lg:text-base font-semibold">1 · {{ 'portal.fixed.step_days'|trans }}</legend>
+                <div class="grid grid-cols-6 gap-1.5 lg:flex lg:flex-wrap">
+                    {% for day in days %}
+                        <twig:Ui:Chip name="days[]" value="{{ day }}" :checked="day in ['mon', 'thu']" class="max-lg:px-0">{{ ('days.short.' ~ day)|trans }}</twig:Ui:Chip>
+                    {% endfor %}
+                </div>
+            </fieldset>
+
+            <fieldset class="m-0 flex min-w-0 flex-col border-0 p-0">
+                <legend class="mb-2.5 lg:mb-3 flex w-full items-center justify-between p-0 text-ui lg:text-base font-semibold">
+                    <span>2 · {{ 'portal.fixed.step_time'|trans }}</span>
+                    <span class="hidden lg:inline text-[13px] font-normal text-ink-mute">{{ 'portal.fixed.available_on'|trans }}</span>
+                </legend>
+                <div class="grid grid-cols-2 gap-1.5 lg:flex lg:flex-wrap">
+                    <twig:Ui:Chip type="radio" name="slot" value="0700">07:00 <span class="font-medium opacity-70">· Noor</span></twig:Ui:Chip>
+                    <twig:Ui:Chip type="radio" name="slot" value="1200">12:00 <span class="font-medium opacity-70">· Sam</span></twig:Ui:Chip>
+                    <twig:Ui:Chip type="radio" name="slot" value="1800" :checked="true">18:00 <span class="font-medium opacity-70">· Sam</span></twig:Ui:Chip>
+                    <twig:Ui:Chip type="radio" name="slot" value="1930" :disabled="true">19:30 · {{ 'portal.full'|trans }}</twig:Ui:Chip>
+                </div>
+            </fieldset>
+
+            <fieldset class="m-0 flex min-w-0 flex-col border-0 p-0">
+                <legend class="mb-2.5 lg:mb-3 p-0 text-ui lg:text-base font-semibold">3 · {{ 'portal.fixed.step_duration'|trans }}</legend>
+                <div class="flex flex-col gap-1.5 lg:flex-row lg:flex-wrap">
+                    <twig:Ui:Chip type="radio" name="duration" value="4w" class="max-lg:justify-start">{{ 'portal.fixed.duration.weeks'|trans }}</twig:Ui:Chip>
+                    <twig:Ui:Chip type="radio" name="duration" value="until" :checked="true" class="max-lg:justify-start">{{ 'portal.fixed.duration.until'|trans }}</twig:Ui:Chip>
+                    <twig:Ui:Chip type="radio" name="duration" value="open" class="max-lg:justify-start">{{ 'portal.fixed.duration.open'|trans }}</twig:Ui:Chip>
+                </div>
+            </fieldset>
+
+            <div class="flex flex-col gap-3 lg:flex-row lg:flex-wrap lg:items-center lg:justify-between lg:gap-4 border border-line bg-ground p-4 lg:px-5 lg:py-[18px]">
+                <div class="flex flex-col gap-1">
+                    <strong class="text-ui lg:text-base">{{ 'portal.fixed.summary'|trans }}</strong>
+                    <span class="text-[13px] lg:text-small text-ink-mute">{{ 'portal.fixed.summary_meta'|trans({'%price%': price}) }}</span>
+                </div>
+                <twig:Ui:Button class="px-[22px] py-3.5 text-ui">{{ 'portal.fixed.confirm'|trans }}</twig:Ui:Button>
+            </div>
+        </section>
+
+        {# ---- Single day ---- #}
+        <section id="los" class="flex scroll-mt-6 flex-col gap-4 lg:gap-5 border border-line p-5 lg:p-7">
+            <div class="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
+                <twig:Ui:Label as="h2">{{ 'portal.single.label'|trans }}</twig:Ui:Label>
+                <span class="text-[12px] lg:text-[13px] text-ink-mute"><span class="lg:hidden">{{ 'portal.single.week'|trans({'%n%': 42}) }}</span><span class="max-lg:hidden">{{ 'portal.single.hint'|trans }}</span></span>
+            </div>
+            <div role="radiogroup" aria-label="{{ 'portal.single.pick_day'|trans }}" class="flex items-center gap-1.5 lg:gap-2">
+                <button type="button" aria-label="{{ 'portal.single.prev_week'|trans }}" class="chip hidden lg:inline-flex w-11 shrink-0 justify-center bg-transparent p-0 text-ink"><twig:Ui:Icon name="chevron-left" size="18" /></button>
+                {% for day in days %}
+                    {%- set date = 11 + loop.index -%}
+                    <label class="flex h-16 lg:h-[68px] min-w-0 flex-1 lg:min-w-[60px] lg:flex-none cursor-pointer flex-col items-center justify-center gap-0.5 border border-control text-[11px] lg:text-[12px] text-ink-mute transition-colors has-checked:border-accent has-checked:bg-accent has-checked:text-accent-ink has-focus-visible:outline-2 has-focus-visible:outline-accent">
+                        <input type="radio" name="day" value="{{ date }}" class="sr-only" aria-label="{{ ('days.long.' ~ day)|trans }} {{ date }}"{{ day == 'wed' ? ' checked' }}>
+                        <span aria-hidden="true">{{ ('days.short.' ~ day)|trans|lower }}</span>
+                        <strong aria-hidden="true" class="font-display text-lg lg:text-xl text-ink [label:has(:checked)_&]:text-accent-ink">{{ date }}</strong>
+                    </label>
+                {% endfor %}
+                <button type="button" aria-label="{{ 'portal.single.next_week'|trans }}" class="chip hidden lg:inline-flex w-11 shrink-0 justify-center bg-transparent p-0 text-ink"><twig:Ui:Icon name="chevron-right" size="18" /></button>
+            </div>
+            <div class="grid gap-2 md:grid-cols-2 2xl:grid-cols-4">
+                {% for s in [
+                    {time: '07:00', type: 'portal.type.group'|trans, meta: 'Noor · ' ~ 'portal.single.of'|trans({'%n%': 1, '%max%': 6}), state: 'open'},
+                    {time: '18:00', type: 'portal.type.group'|trans, meta: 'Sam · ' ~ 'portal.full'|trans, state: 'full'},
+                    {time: '19:30', type: 'portal.type.group'|trans, meta: 'Noor · ' ~ 'portal.single.of'|trans({'%n%': 4, '%max%': 6}), state: 'open'},
+                    {time: '12:00', type: 'portal.type.one_on_one'|trans, meta: 'Sam · ' ~ 'portal.single.free'|trans, state: 'one'},
+                ] %}
+                    <article class="flex items-center justify-between gap-2.5 md:flex-col md:items-start md:justify-start md:gap-2 border p-3.5 text-small {{ s.state == 'one' ? 'border-accent' : 'border-line' }} {{ s.state == 'full' ? 'opacity-60' : '' }}">
+                        <div class="flex flex-col md:gap-2">
+                            <strong>{{ s.time }} · {{ s.type }}</strong>
+                            <span class="text-[13px] md:text-small text-ink-mute">{{ s.meta }}</span>
+                        </div>
+                        {% if s.state == 'full' %}
+                            <button type="button" class="min-h-touch md:min-h-9 border border-dashed border-control bg-transparent px-3 py-2 text-[13px] text-ink-soft cursor-pointer hover:border-accent hover:text-accent">{{ 'portal.single.waitlist'|trans }}</button>
+                        {% elseif s.state == 'one' %}
+                            <button type="button" class="min-h-touch md:min-h-9 border-0 bg-accent px-3 py-2 text-[13px] font-bold text-accent-ink cursor-pointer">{{ 'portal.single.book_one'|trans }}</button>
+                        {% else %}
+                            <button type="button" class="min-h-touch md:min-h-9 border border-control bg-transparent px-3 py-2 text-[13px] font-semibold text-ink cursor-pointer hover:border-accent hover:text-accent"><span class="md:hidden">{{ 'portal.single.book_short'|trans }}</span><span class="max-md:hidden">{{ 'portal.single.book'|trans }}</span></button>
+                        {% endif %}
+                    </article>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+
+    {# ---- Right column: your group + upcoming ---- #}
+    <aside class="flex flex-col gap-5 xl:w-[340px] xl:shrink-0">
+        <section id="groep" class="flex scroll-mt-6 flex-col gap-3 lg:gap-3.5 border border-line p-5 lg:p-6">
+            <twig:Ui:Label as="h2">{{ 'portal.group.label'|trans }}</twig:Ui:Label>
+            <div class="flex items-center gap-3">
+                <twig:Ui:Avatar initials="[S]" size="lg" tone="strong" />
+                <div class="flex flex-col">
+                    <strong>Sam [Achternaam]</strong>
+                    <span class="text-[13px] text-ink-mute">{{ 'portal.group.trainer_meta'|trans }}</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-2.5">
+                <div class="flex" aria-hidden="true">
+                    {% for initial in ['L', 'R', 'M', 'T', 'K'] %}
+                        <twig:Ui:Avatar initials="[{{ initial }}]" class="{{ loop.first ? '' : '-ml-2' }}" />
+                    {% endfor %}
+                </div>
+                <span class="text-[13px] text-ink-soft">Lotte, Rik, Maud, Tom, Kim</span>
+            </div>
+            <a href="#groep" class="text-small font-semibold text-accent">{{ 'portal.group.message'|trans }} →</a>
+        </section>
+
+        <section id="komend" class="flex scroll-mt-6 flex-col border border-line p-5 lg:p-6">
+            <twig:Ui:Label as="h2" class="mb-1.5 text-ink-mute">{{ 'portal.upcoming.label'|trans }}</twig:Ui:Label>
+            <ul class="m-0 list-none p-0">
+                {% for u in [
+                    {when: 'portal.upcoming.d1'|trans, what: 'portal.upcoming.group'|trans ~ ' · Sam'},
+                    {when: 'portal.upcoming.d2'|trans, what: 'portal.type.one_on_one'|trans ~ ' · Sam'},
+                    {when: 'portal.upcoming.d3'|trans, what: 'portal.upcoming.group'|trans ~ ' · Sam'},
+                ] %}
+                    <li class="flex items-center justify-between gap-3 py-3 lg:py-3.5 text-small {{ loop.last ? '' : 'border-b border-line' }}">
+                        <div class="flex flex-col">
+                            <strong>{{ u.when }}</strong>
+                            <span class="text-ink-mute">{{ u.what }}</span>
+                        </div>
+                        <button type="button" class="min-h-touch lg:min-h-9 border border-control bg-transparent px-3 py-2 text-[13px] font-semibold text-ink cursor-pointer hover:border-accent hover:text-accent">{{ 'portal.upcoming.cancel'|trans }}</button>
+                    </li>
+                {% endfor %}
+            </ul>
+            <p class="m-0 mt-3 text-[13px] text-ink-mute">{{ 'portal.upcoming.note'|trans({'%hours%': setting('booking.cancel_window_hours')}) }}</p>
+        </section>
+    </aside>
+</div>
+{% endblock %}

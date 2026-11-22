@@ -1,0 +1,19 @@
+{# Marketing layout: header, page content, footer, sticky CTA.
+   Child templates may set: nav_current (story|training|trainers|studio), header_variant (default|signup), sticky_cta (bool), footer_bordered (bool). #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="flex min-h-screen flex-col">
+    <twig:Site:Header current="{{ nav_current|default(null) }}" variant="{{ header_variant|default('default') }}" />
+
+    <main id="main" class="flex flex-1 flex-col">
+        {% block content %}{% endblock %}
+    </main>
+
+    <twig:Site:Footer :bordered="footer_bordered|default(false)" :clearSticky="sticky_cta is defined ? sticky_cta : true" />
+</div>
+
+{% if sticky_cta is not defined or sticky_cta %}
+    <twig:Site:StickyCta />
+{% endif %}
+{% endblock %}

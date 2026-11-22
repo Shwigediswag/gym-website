@@ -1,0 +1,21 @@
+{# Bedankpagina na aanmelden (HANDOFF §4.4). #}
+{% extends 'layouts/site.html.twig' %}
+{% set header_variant = 'signup' %}
+{% set sticky_cta = false %}
+{% set footer_bordered = true %}
+
+{% block title %}{{ 'thanks.title'|trans }}{{ setting('seo.title_suffix') }}{% endblock %}
+
+{% block seo %}<meta name="robots" content="noindex">{% endblock %}
+
+{% block content %}
+<section class="flex flex-1 flex-col items-center justify-center gap-5 lg:gap-8 px-gutter-m lg:px-gutter py-20 lg:py-32 text-center">
+    <twig:Ui:Label>{{ 'thanks.label'|trans }}</twig:Ui:Label>
+    <h1 class="m-0 max-w-[820px] font-display text-display-xl-m lg:text-[84px] leading-none">{{ 'thanks.heading'|trans }}</h1>
+    <p class="m-0 max-w-[560px] text-body lg:text-lead text-ink-soft">{{ 'thanks.text'|trans }}</p>
+    <div class="flex flex-col gap-2 lg:flex-row lg:gap-3.5">
+        <twig:Ui:Button variant="outline" size="lg" href="{{ path('marketing_studio') }}">{{ 'thanks.cta_studio'|trans }}</twig:Ui:Button>
+        <twig:Ui:Button variant="outline" size="lg" href="{{ path('marketing_about') }}">{{ 'thanks.cta_about'|trans }}</twig:Ui:Button>
+    </div>
+</section>
+{% endblock %}

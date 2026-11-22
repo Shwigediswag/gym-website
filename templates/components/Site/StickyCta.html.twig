@@ -1,0 +1,13 @@
+{# Site:StickyCta — desktop: amber tab sticking out of the right viewport edge; mobile: full-width amber bar at the bottom.
+   Visible without JS; the sticky-cta controller hides it until ~400px of scroll. #}
+{% props href = null, threshold = 400 %}
+{%- set url = href ?? path('intake_new') -%}
+<div data-controller="sticky-cta" data-sticky-cta-threshold-value="{{ threshold }}">
+    <a href="{{ url }}" data-sticky-cta-target="item" data-visible="true" class="hidden lg:flex fixed right-0 top-[62vh] z-40 items-center gap-2.5 py-4 pl-6 pr-[22px] bg-accent text-accent-ink hover:text-accent-ink font-bold text-ui shadow-cta transition-[translate,opacity,visibility] duration-base ease-site data-[visible=false]:translate-x-full data-[visible=false]:opacity-0 data-[visible=false]:invisible">
+        <twig:Ui:Icon name="arrow-right" size="18" stroke="2.4" />{{ 'common.cta_intro'|trans }}
+    </a>
+    <a href="{{ url }}" data-sticky-cta-target="item" data-visible="true" class="lg:hidden fixed inset-x-0 bottom-0 z-40 flex items-center justify-between gap-3 px-gutter-m pt-[18px] pb-7 bg-accent text-accent-ink hover:text-accent-ink font-bold text-base shadow-cta-up transition-[translate,opacity,visibility] duration-base ease-site data-[visible=false]:translate-y-full data-[visible=false]:opacity-0 data-[visible=false]:invisible">
+        <span>{{ 'common.cta_intro'|trans }}</span>
+        <twig:Ui:Icon name="arrow-right" stroke="2.4" />
+    </a>
+</div>

@@ -1,0 +1,72 @@
+{# Over ons (HANDOFF §4.2, reference-html/over-ons.html). STATIC FRONT-END: each <section> maps to a future page-builder block. #}
+{% extends 'layouts/site.html.twig' %}
+{% set nav_current = 'story' %}
+
+{% block title %}{{ 'about.title'|trans }}{{ setting('seo.title_suffix') }}{% endblock %}
+
+{% block content %}
+{%- set max = setting('booking.max_group_size') -%}
+
+{# ---- Hero ---- #}
+<section class="grid items-end gap-6 lg:grid-cols-2 lg:gap-16 px-gutter-m lg:px-gutter pt-12 lg:pt-24 pb-12 lg:pb-[72px]">
+    <div class="flex flex-col gap-5 lg:gap-7">
+        <twig:Ui:Label>{{ 'about.label'|trans }}</twig:Ui:Label>
+        <h1 class="m-0 font-display text-display-xl-m lg:text-[84px] leading-none">{{ 'brand.about_heading'|trans }}</h1>
+    </div>
+    <p class="m-0 lg:mb-3 max-w-[520px] text-body lg:text-lead text-ink-soft">{{ 'about.intro'|trans }}</p>
+</section>
+
+{# ---- Founder ---- #}
+<section class="grid gap-3 lg:grid-cols-2 lg:gap-6 px-gutter-m lg:px-gutter pb-14 lg:pb-28">
+    <twig:Ui:ImagePlaceholder label="{{ 'about.founder.photo'|trans }}" class="h-[360px] lg:h-[560px]" />
+    <div class="flex flex-col justify-center gap-5 lg:gap-6 border border-line p-6 lg:p-12">
+        <h2 class="m-0 font-display text-display-lg-m lg:text-display-md leading-[1.05]">{{ 'about.founder.heading'|trans }}</h2>
+        {# TODO: founder story is supplied by the owner (HANDOFF §11). #}
+        <p class="m-0 text-base lg:text-body leading-[1.7] text-ink-soft">{{ 'about.founder.p1_placeholder'|trans }}</p>
+        <p class="m-0 text-base lg:text-body leading-[1.7] text-ink-soft">{{ 'about.founder.p2_placeholder'|trans({'%city%': setting('studio.city')}) }}</p>
+        <span class="font-display font-semibold text-[26px] text-accent">— {{ 'about.founder.signature_placeholder'|trans }}</span>
+    </div>
+</section>
+
+{# ---- Three beliefs ---- #}
+<section class="flex flex-col gap-8 lg:gap-12 bg-deep px-gutter-m lg:px-gutter py-12 lg:py-24">
+    <div class="flex max-w-[760px] flex-col gap-4">
+        <twig:Ui:Label>{{ 'about.beliefs.label'|trans }}</twig:Ui:Label>
+        <h2 class="m-0 font-display text-display-lg-m lg:text-display-lg leading-[1.05]">{{ 'about.beliefs.heading'|trans }}</h2>
+    </div>
+    <div class="hairline-grid lg:grid-cols-3">
+        {% for i in 1..3 %}
+            <article class="flex flex-col gap-4 bg-deep p-6 lg:p-10">
+                <span class="font-display font-semibold text-display-md leading-none text-accent" aria-hidden="true">0{{ i }}</span>
+                <h3 class="m-0 font-sans text-xl lg:text-2xl font-semibold">{{ ('about.beliefs.b' ~ i ~ '.title')|trans({'%max%': max}) }}</h3>
+                <p class="m-0 leading-[1.6] text-ink-soft">{{ ('about.beliefs.b' ~ i ~ '.text')|trans }}</p>
+            </article>
+        {% endfor %}
+    </div>
+</section>
+
+{# ---- Trainer profiles ---- #}
+<section id="team" class="flex scroll-mt-6 flex-col gap-8 lg:gap-12 px-gutter-m lg:px-gutter py-14 lg:py-28">
+    <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-6">
+        <h2 class="m-0 font-display text-display-lg-m lg:text-display-lg leading-[1.05]">{{ 'about.team.heading'|trans }}</h2>
+        <p class="m-0 max-w-[440px] leading-[1.6] text-ink-soft">{{ 'about.team.intro'|trans }}</p>
+    </div>
+    <div class="hairline-grid">
+        {# TODO: trainers come from the Trainer entity; names, bios and photos are supplied by the owner. #}
+        {% for i in 1..2 %}
+            <article class="hairline-cell grid items-center gap-5 lg:grid-cols-3 lg:gap-10 p-5 lg:p-8">
+                <twig:Ui:ImagePlaceholder label="{{ 'trainers.portrait'|trans({'%n%': i}) }}" class="h-[300px] lg:h-[360px]" />
+                <div class="flex flex-col gap-3.5 lg:col-span-2">
+                    <twig:Ui:Label>{{ ('trainers.t' ~ i ~ '.spec')|trans }} · {{ ('trainers.t' ~ i ~ '.days')|trans }}</twig:Ui:Label>
+                    <h3 class="m-0 font-display text-display-sm lg:text-[40px] leading-none">{{ 'trainers.name_placeholder'|trans }}</h3>
+                    <p class="m-0 text-base lg:text-body leading-[1.7] text-ink-soft">{{ 'trainers.bio_placeholder'|trans }}</p>
+                    <p class="m-0 font-display font-semibold text-xl lg:text-2xl text-ink-soft">„{{ ('trainers.t' ~ i ~ '.quote')|trans }}”</p>
+                </div>
+            </article>
+        {% endfor %}
+    </div>
+</section>
+
+{# ---- Framed CTA ---- #}
+<twig:Site:CtaFrame heading="{{ 'about.cta.heading'|trans }}" text="{{ 'about.cta.text'|trans }}" />
+{% endblock %}

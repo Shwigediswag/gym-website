@@ -1,4 +1,5 @@
-# Gym — English (second language). Keep the same warm, direct tone as the Dutch copy.
+# Gym — English (second language). Same warm, direct tone as the Dutch copy; short sentences, no superlatives.
+# Values in [square brackets] are owner placeholders (HANDOFF §11): never fill them in yourself.
 site:
     name: Gym
     tagline: 'By appointment. By name.'
@@ -6,15 +7,36 @@ site:
 a11y:
     skip_to_content: 'Skip to content'
 
+common:
+    cta_intro: 'Free intro session'
+    cta_plan: 'Plan a free intro session'
+    cta_plan_yours: 'Plan your free intro session'
+    price_placeholder: '[PRICE]'
+    prev: 'Previous'
+    next: 'Next'
+    close: 'Close'
+    menu: 'Menu'
+
 nav:
+    main: 'Main navigation'
+    home_label: 'Gym home'
     story: 'Our story'
     training: 'Training'
     trainers: 'Trainers'
+    studio: 'The studio'
     experiences: 'Stories'
     login: 'Log in'
     logout: 'Log out'
-    intro: 'Free intro session'
     language: 'Language'
+
+footer:
+    instagram: 'Instagram'
+    privacy: 'Privacy'
+    terms: 'Terms'
+
+days:
+    short: { mon: 'Mon', tue: 'Tue', wed: 'Wed', thu: 'Thu', fri: 'Fri', sat: 'Sat' }
+    long: { mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', thu: 'Thursday', fri: 'Friday', sat: 'Saturday' }
 
 brand:
     no_pass: 'No membership card. An appointment.'
@@ -22,19 +44,260 @@ brand:
     coffee: 'Come have a coffee first.'
     about_heading: 'Your trainer knows you, and your right knee.'
 
+trainers:
+    name_placeholder: '[Name]'
+    portrait: '[Portrait trainer %n%]'
+    bio_placeholder: '[Short bio: background, training, why you are at Gym, and one thing members say about you. Four sentences.]'
+    t1:
+        spec: 'Strength & mobility'
+        days: 'Mon, Wed, Fri'
+        quote: 'I start every session with a question, not an exercise.'
+    t2:
+        spec: 'Conditioning & recovery'
+        days: 'Tue, Thu, Sat'
+        quote: 'Progress is personal. Compare yourself to last month, not to the person next to you.'
+    t3:
+        spec: 'Injury-free training'
+        days: 'Mon, Thu, Sat'
+
 home:
     hero:
         label: 'Small group & personal training · %city%'
         intro: 'Gym is a small training studio. You book a fixed hour, train in a group of at most %max% and have one trainer who really gets to know you. Or 1-on-1, if you prefer.'
-        cta_primary: 'Plan your free intro session'
         cta_secondary: 'See what we offer'
+    slider:
+        slide1: '[Hero slide 1: trainer and group, close and personal]'
+        slide2: '[Hero slide 2: 1-on-1 session]'
+        slide3: '[Hero slide 3: the studio]'
+        caption: 'Monday 6 pm — Sam, Lotte, Rik, Maud, Tom and you.'
     story:
-        heading: 'No membership card. An appointment.'
-        p1: 'You book an hour, your trainer knows you are coming, and so do the people you train with. That simple.'
+        heading_1: 'No membership card.'
+        heading_2: 'An appointment.'
+        p1: 'At a regular gym you walk in whenever you like, and nobody walks with you. At Gym it works the other way round: you fix your hours — for a week, or for the rest of the season — and we make sure your group and your trainer are there at that hour.'
+        p2: 'You train with the same [five] people. Your trainer knows your neck is sensitive and that you always come in tired on Tuesdays. That is not an extra, that is the whole idea.'
         link: 'Read our story'
+    offer:
+        group:
+            photo: '[Photo: small group]'
+            title: 'Small group'
+            text: 'Max. %max% people, a fixed group, a fixed trainer. 60 minutes.'
+            price: 'from %price% / month'
+        one:
+            photo: '[Photo: 1-on-1]'
+            title: '1-on-1'
+            text: 'Just you and your trainer, at a time that suits you. Also alongside your group training.'
+            price: 'from %price% / session'
+        fixed:
+            photo: '[Photo: calendar / fixed times]'
+            title: 'Fixed times'
+            text: 'Fix your hours for a longer period and your spot is guaranteed. Can''t make it? Cancel up to %hours% hours ahead.'
+            price: 'included'
+    trainers:
+        heading: 'Meet your trainers'
+        intro: 'You choose your trainer at the intro session. After that it stays the same person.'
+    testimonials:
+        label: 'What members say'
+        quote_placeholder: '[Quote from a member about the group or the trainer — from a real conversation, not made up.]'
+        author_placeholder: '[First name], member since [month]'
+    cta:
+        text: 'Half an hour, no obligation. Together we look at which group suits you.'
 
-foundation:
-    notice: 'Foundation page. The real pages are built with the page builder.'
+about:
+    title: 'About us'
+    label: 'About us'
+    intro: 'Gym started out of frustration with anonymous gyms. We wanted a place where your trainer knows who you are, where your group is waiting for you, and where your right knee is taken as seriously as your goal.'
+    founder:
+        photo: '[Photo: founder(s) in the studio, relaxed portrait]'
+        heading: 'Why we started Gym'
+        p1_placeholder: '[The founder''s story: who you are, how long you have been a trainer, what you saw going wrong in big gyms, and the moment you decided to do it differently. Two paragraphs, first person.]'
+        p2_placeholder: '[Second paragraph: how the studio in %city% came about, when the doors open and what you hope members find here.]'
+        signature_placeholder: '[Founder''s name]'
+    beliefs:
+        label: 'What we believe in'
+        heading: 'Three things we never let go of'
+        b1:
+            title: 'By appointment, never walk-in'
+            text: 'Every hour is planned, every spot belongs to someone. That way your trainer knows exactly who is coming and the session can be prepared for you.'
+        b2:
+            title: 'At most %max%, always the same'
+            text: 'A group is only a group when you know each other. That is why we do not reshuffle every week, and why we notice when you are missing.'
+        b3:
+            title: 'One trainer, for the long term'
+            text: 'Progress is personal and slow. You can only follow it when the same person sees you month after month.'
+    team:
+        heading: 'The trainers'
+        intro: 'You choose your trainer at the intro session and after that it stays the same person. Here they are.'
+    cta:
+        heading: 'Come and meet us. And your group.'
+        text: 'Half an hour in the studio, free and without obligation.'
+
+studio:
+    title: 'The studio'
+    label: 'The studio'
+    heading: 'Take a look inside.'
+    intro: 'No mirror wall, no loud music, no queue for the rack. A room for six people, one trainer and everything you need.'
+    slider:
+        slide1: '[Slide 1: the room, wide, warm light]'
+        slide2: '[Slide 2: the group around the rack]'
+        slide3: '[Slide 3: the changing room]'
+        caption: 'The room, fifteen minutes before the 6 pm group.'
+    gallery:
+        heading: 'All photos'
+        enlarge: 'Enlarge photo: %label%'
+        note: 'Click a photo for a larger view. All photos show our own members and trainers, with their permission.'
+        filter:
+            label: 'Filter photos'
+            all: 'All'
+            room: 'The room'
+            session: 'A session'
+            people: 'The people'
+            one_on_one: '1-on-1'
+        photo1: '[The room · portrait]'
+        photo2: '[A session · technique]'
+        photo3: '[The people · chatting afterwards]'
+        photo4: '[The room · wide]'
+        photo5: '[1-on-1 · deadlift]'
+        photo6: '[The people · Monday 6 pm group]'
+        photo7: '[A session · portrait]'
+        photo8: '[The room · detail: chalk and bench]'
+        photo9: '[The people · trainer and member]'
+        photo10: '[A session · the heavy block]'
+    practical:
+        address_label: 'Address'
+        address_note_placeholder: '[Parking / bike storage / public transport in one sentence.]'
+        hours_label: 'Training hours'
+        hours_note: 'By appointment only. Outside group hours the room is open for 1-on-1.'
+        visit_label: 'Want to see for yourself?'
+        visit_text: 'A photo says a lot, the room itself says more. Join for an hour during the intro session.'
+
+signup:
+    title: 'Sign up for a free intro session'
+    heading: 'Tell us who you are. We take care of the rest.'
+    intro: 'Fill this in, and within one working day %name% will call you to pick a moment. The intro session takes half an hour, is free and commits you to nothing.'
+    photo: '[Photo: trainer at the door, welcoming]'
+    progress: 'Step %n% of 3'
+    steps:
+        s1:
+            title: 'You fill in this form'
+            text: 'Two minutes, no account needed.'
+        s2:
+            title: 'We call you to make an appointment'
+            text: 'Within one working day, at the time you indicate.'
+        s3:
+            title: 'You come and watch for an hour'
+            text: 'You meet your trainer and see a group in action.'
+    s1:
+        legend: 'Your details'
+        first_name: 'First name'
+        last_name: 'Last name'
+        email: 'E-mail'
+        email_placeholder: 'name@example.com'
+        phone: 'Phone'
+    s2:
+        legend: 'What do you want to achieve?'
+        hint: 'Pick everything that fits. This helps us choose your group and trainer.'
+        goals:
+            stronger: 'Getting stronger'
+            fitness: 'Better fitness'
+            weight: 'Losing weight'
+            injury_free: 'Moving without injuries'
+            energy: 'More energy during the week'
+            rhythm: 'Simply getting back into a rhythm'
+        experience: 'How often do you train now?'
+        levels:
+            rarely: 'Rarely or never'
+            sometimes: 'Now and then'
+            regularly: 'Regularly'
+        injuries: 'Anything your trainer should know? (injuries, your right knee, surgery)'
+        injuries_placeholder: 'For example: my right knee has been sensitive in deep squats since last year.'
+    s3:
+        legend: 'When are you available?'
+        hint: 'Tick the parts of the day that usually work. We will find a group to match.'
+        dayparts:
+            morning: 'Morning'
+            afternoon: 'Afternoon'
+            evening: 'Evening'
+        format: 'What do you have in mind?'
+        formats:
+            group: 'Small group (max. %max%)'
+            one_on_one: '1-on-1'
+            unknown: 'Not sure yet'
+        call: 'When is the best time to call you?'
+        call_placeholder: 'For example: weekdays after 5 pm'
+    consent: 'We only use your details to plan this intro session. See our'
+    consent_link: 'privacy statement'
+    submit: 'Send and plan my intro session'
+    submit_note: 'Free · no account needed · we call within one working day'
+
+thanks:
+    title: 'Thank you'
+    label: 'Sign-up received'
+    heading: 'We will call you within one working day.'
+    text: 'Then we pick a moment for your intro session together. Half an hour, free, and no strings attached.'
+    cta_studio: 'Take a look inside'
+    cta_about: 'Read our story'
+
+portal:
+    greeting: 'Hi, %name%'
+    group_of: '%trainer%''s group'
+    full: 'full'
+    nav:
+        label: 'Member portal'
+        booking: 'Book'
+        sessions: 'My sessions'
+        sessions_short: 'Sessions'
+        group: 'My group'
+        group_short: 'Group'
+        progress: 'Progress'
+        profile: 'Profile'
+    type:
+        group: 'Small group'
+        one_on_one: '1-on-1'
+    booking:
+        heading: 'Book'
+        intro: 'Fix your regular times, book a single day or plan a 1-on-1.'
+        tabs:
+            fixed: 'Fixed times'
+            single: 'Single day'
+            one_on_one: '1-on-1'
+    fixed:
+        current: 'current: Mon + Thu 6 pm until 31 Dec'
+        step_days: 'Choose your days'
+        step_time: 'Choose your hour'
+        available_on: 'available on Mon + Thu'
+        step_duration: 'For how long?'
+        duration:
+            weeks: '4 weeks'
+            until: 'Until 31 December'
+            open: 'Until I cancel'
+        summary: 'Mon + Thu · 18:00 · Sam''s group'
+        summary_meta: '22 sessions · 12 Oct until 31 Dec · %price% / month'
+        confirm: 'Confirm fixed times'
+    single:
+        label: 'Book a single day'
+        hint: 'an extra session or a make-up class, outside your fixed hours'
+        week: 'week %n%'
+        pick_day: 'Choose a day'
+        prev_week: 'Previous week'
+        next_week: 'Next week'
+        of: '%n% of %max%'
+        free: 'still free'
+        book: 'Book this spot'
+        book_short: 'Book'
+        book_one: 'Book 1-on-1'
+        waitlist: 'Waiting list'
+    group:
+        label: 'Your group'
+        trainer_meta: 'Trainer · strength'
+        message: 'Message the group'
+    upcoming:
+        label: 'Upcoming sessions'
+        group: 'Group'
+        d1: 'Mon 12 Oct · 18:00'
+        d2: 'Wed 14 Oct · 12:00'
+        d3: 'Thu 15 Oct · 18:00'
+        cancel: 'Cancel'
+        note: 'You can cancel up to %hours% hours ahead.'
 
 form:
     required: 'Required'

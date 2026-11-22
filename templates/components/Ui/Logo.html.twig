@@ -1,0 +1,7 @@
+{# Ui:Logo — wordmark "Gym" in Cormorant 600 + amber square on the baseline. No image mark. #}
+{% props size = 'md', href = null %}
+{%- set text = {sm: 'text-[28px]', md: 'text-[30px] lg:text-[38px]', portal: 'text-[32px]'} -%}
+{%- set dot = {sm: 'size-[7px]', md: 'size-[7px] lg:size-[9px]', portal: 'size-2'} -%}
+<a href="{{ href ?? path('marketing_home') }}" aria-label="{{ 'nav.home_label'|trans }}" {{ attributes.defaults({class: 'inline-flex items-baseline gap-0.5 text-ink hover:text-ink'}) }}>
+    <span class="font-display font-semibold leading-none tracking-[0.02em] {{ text[size] }}">{{ 'site.name'|trans }}</span><span class="inline-block bg-accent {{ dot[size] }}" aria-hidden="true"></span>
+</a>

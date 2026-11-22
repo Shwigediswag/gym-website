@@ -1,4 +1,5 @@
-# Public site: localized prefix, nl at the root and en under /en (HANDOFF §9).
+# Public site and member portal: localized prefix, nl at the root and en under /en (HANDOFF §9).
+# Per-route slugs are localized in the #[Route] attributes (/over-ons <-> /en/about).
 marketing:
     resource: ../src/Marketing/Controller/
     type: attribute
@@ -6,5 +7,14 @@ marketing:
         nl: ''
         en: '/en'
     trailing_slash_on_root: false
+    requirements:
+        _locale: nl|en
+
+portal:
+    resource: ../src/Portal/Controller/
+    type: attribute
+    prefix:
+        nl: ''
+        en: '/en'
     requirements:
         _locale: nl|en

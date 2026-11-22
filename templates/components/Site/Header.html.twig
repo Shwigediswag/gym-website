@@ -1,0 +1,55 @@
+{# Site:Header — desktop: nav left, logo centre, actions right. Mobile: logo, Inloggen, 44px hamburger -> full-screen menu.
+   variant="signup": no intro CTA; mobile shows a close button back to home instead of the menu. #}
+{% props current = null, variant = 'default' %}
+{%- set items = [
+    {key: 'story', label: 'nav.story'|trans, href: path('marketing_about')},
+    {key: 'training', label: 'nav.training'|trans, href: path('marketing_home') ~ '#trainen'},
+    {key: 'trainers', label: 'nav.trainers'|trans, href: path('marketing_about') ~ '#team'},
+    {key: 'studio', label: 'nav.studio'|trans, href: path('marketing_studio')},
+] -%}
+<header data-controller="mobile-menu" class="border-b border-line">
+    <div class="flex items-center justify-between gap-3 lg:gap-6 px-gutter-m lg:px-gutter py-4 lg:py-6">
+        <nav aria-label="{{ 'nav.main'|trans }}" class="hidden lg:flex flex-1 gap-7 text-ui font-medium">
+            {% for item in items %}
+                <a href="{{ item.href }}" class="{{ current == item.key ? 'text-accent' : '' }}"{% if current == item.key %} aria-current="page"{% endif %}>{{ item.label }}</a>
+            {% endfor %}
+        </nav>
+
+        <twig:Ui:Logo />
+
+        <div class="flex flex-1 items-center justify-end gap-2 lg:gap-3">
+            <twig:Ui:Button variant="outline" size="sm" href="{{ path('portal_booking') }}" class="{{ variant == 'signup' ? 'hidden lg:inline-flex' : 'max-lg:px-3 max-lg:text-[13px]' }}">{{ 'nav.login'|trans }}</twig:Ui:Button>
+            {% if variant == 'signup' %}
+                <a href="{{ path('marketing_home') }}" aria-label="{{ 'common.close'|trans }}" class="lg:hidden inline-flex items-center justify-center size-touch border border-control">
+                    <twig:Ui:Icon name="close" size="18" />
+                </a>
+            {% else %}
+                <twig:Ui:Button size="sm" href="{{ path('intake_new') }}" class="hidden lg:inline-flex px-5">{{ 'common.cta_intro'|trans }}</twig:Ui:Button>
+                <button type="button" aria-label="{{ 'common.menu'|trans }}" aria-expanded="false" aria-controls="mobile-menu" data-mobile-menu-target="toggle" data-action="mobile-menu#open" class="lg:hidden inline-flex items-center justify-center size-touch border border-control bg-transparent text-ink cursor-pointer">
+                    <twig:Ui:Icon name="menu" />
+                </button>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if variant != 'signup' %}
+        <div id="mobile-menu" hidden role="dialog" aria-modal="true" aria-label="{{ 'common.menu'|trans }}" data-mobile-menu-target="panel" data-action="keydown->mobile-menu#keydown" class="fixed inset-0 z-50 flex flex-col bg-ground lg:hidden">
+            <div class="flex items-center justify-between px-gutter-m py-4 border-b border-line">
+                <twig:Ui:Logo />
+                <button type="button" aria-label="{{ 'common.close'|trans }}" data-action="mobile-menu#close" class="inline-flex items-center justify-center size-touch border border-control bg-transparent text-ink cursor-pointer">
+                    <twig:Ui:Icon name="close" size="18" />
+                </button>
+            </div>
+            <nav aria-label="{{ 'nav.main'|trans }}" class="flex flex-1 flex-col overflow-y-auto px-gutter-m py-6">
+                {% for item in items %}
+                    <a href="{{ item.href }}" data-action="mobile-menu#close" class="py-4 border-b border-line font-display font-semibold text-display-sm {{ current == item.key ? 'text-accent' : '' }}"{% if current == item.key %} aria-current="page"{% endif %}>{{ item.label }}</a>
+                {% endfor %}
+                <a href="{{ path('portal_booking') }}" class="py-4 border-b border-line font-display font-semibold text-display-sm">{{ 'nav.login'|trans }}</a>
+            </nav>
+            <div class="flex flex-col gap-4 px-gutter-m pt-4 pb-7 border-t border-line">
+                <twig:Ui:Button href="{{ path('intake_new') }}" class="w-full">{{ 'common.cta_plan_yours'|trans }}</twig:Ui:Button>
+                <twig:Site:LocaleSwitch class="justify-center" />
+            </div>
+        </div>
+    {% endif %}
+</header>

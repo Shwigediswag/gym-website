@@ -1,0 +1,121 @@
+{# Aanmelden / gratis kennismaking (HANDOFF §4.4, reference-html/aanmelden.html + mobile-aanmelden.html).
+   STATIC FRONT-END: plain HTML form; nothing is stored or mailed yet. Becomes a Symfony Form -> IntakeRequest (PLANNING §1.8). #}
+{% extends 'layouts/site.html.twig' %}
+{% set header_variant = 'signup' %}
+{% set sticky_cta = false %}
+{% set footer_bordered = true %}
+
+{% block title %}{{ 'signup.title'|trans }}{{ setting('seo.title_suffix') }}{% endblock %}
+
+{% block content %}
+{%- set max = setting('booking.max_group_size') -%}
+{%- set days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat'] -%}
+{%- set dayparts = ['morning', 'afternoon', 'evening'] -%}
+<div data-controller="form-progress" data-form-progress-label-value="{{ 'signup.progress'|trans }}" class="flex flex-col lg:flex-row lg:flex-wrap lg:items-start gap-0 lg:gap-16 px-gutter-m lg:px-gutter pt-8 lg:pt-20 pb-[160px] lg:pb-24">
+
+    {# ---- Intro + steps ---- #}
+    <aside class="flex flex-col gap-4 lg:gap-8 lg:max-w-[480px] lg:flex-[1_1_360px]">
+        <twig:Ui:Label>{{ 'common.cta_intro'|trans }}</twig:Ui:Label>
+        <h1 class="m-0 font-display text-[44px] lg:text-[72px] leading-none">{{ 'signup.heading'|trans }}</h1>
+        <p class="m-0 text-base lg:text-[18px] leading-[1.6] text-ink-soft">{{ 'signup.intro'|trans({'%name%': 'trainers.name_placeholder'|trans}) }}</p>
+        <ol class="m-0 hidden list-none p-0 lg:grid hairline-grid">
+            {% for i in 1..3 %}
+                <li class="hairline-cell flex items-baseline gap-4 px-6 py-5">
+                    <span class="font-display font-semibold text-[28px] leading-none text-accent" aria-hidden="true">0{{ i }}</span>
+                    <div class="flex flex-col gap-1">
+                        <strong>{{ ('signup.steps.s' ~ i ~ '.title')|trans }}</strong>
+                        <span class="text-small text-ink-mute">{{ ('signup.steps.s' ~ i ~ '.text')|trans }}</span>
+                    </div>
+                </li>
+            {% endfor %}
+        </ol>
+        <twig:Ui:ImagePlaceholder label="{{ 'signup.photo'|trans }}" class="hidden h-[300px] lg:flex" />
+    </aside>
+
+    {# ---- Mobile 1-2-3 progress, follows the scroll position ---- #}
+    <div class="lg:hidden sticky top-0 z-10 -mx-gutter-m flex items-center gap-1.5 bg-ground px-gutter-m py-3 mt-2" aria-hidden="true">
+        {% for i in 1..3 %}
+            <span data-form-progress-target="dot" data-active="{{ i == 1 ? 'true' : 'false' }}" class="flex size-7 items-center justify-center border border-control text-[12px] font-semibold data-[active=true]:border-accent data-[active=true]:bg-accent data-[active=true]:text-accent-ink">{{ i }}</span>
+            {% if not loop.last %}<span class="h-px flex-1 bg-control"></span>{% endif %}
+        {% endfor %}
+        <span data-form-progress-target="label" class="ml-2.5 text-[13px] text-ink-mute">{{ 'signup.progress'|trans|replace({'%n%': '1'}) }}</span>
+    </div>
+
+    {# ---- Form ---- #}
+    <form id="intake-form" method="post" action="{{ path('intake_new') }}" class="flex min-w-0 flex-col gap-10 lg:gap-12 pt-5 lg:pt-0 lg:flex-[999_1_560px]">
+
+        <fieldset data-form-progress-target="step" class="m-0 flex min-w-0 flex-col gap-3.5 lg:gap-5 border-0 p-0">
+            <legend class="mb-1.5 lg:mb-2 p-0 font-display font-semibold text-[28px] lg:text-[32px]">1 · {{ 'signup.s1.legend'|trans }}</legend>
+            <div class="grid gap-3.5 lg:gap-4 md:grid-cols-2">
+                <twig:Ui:Field id="first_name" label="{{ 'signup.s1.first_name'|trans }}" placeholder="{{ 'signup.s1.first_name'|trans }}" autocomplete="given-name" />
+                <twig:Ui:Field id="last_name" label="{{ 'signup.s1.last_name'|trans }}" placeholder="{{ 'signup.s1.last_name'|trans }}" autocomplete="family-name" />
+                <twig:Ui:Field id="email" type="email" label="{{ 'signup.s1.email'|trans }}" placeholder="{{ 'signup.s1.email_placeholder'|trans }}" autocomplete="email" />
+                <twig:Ui:Field id="phone" type="tel" label="{{ 'signup.s1.phone'|trans }}" placeholder="06 …" autocomplete="tel" />
+            </div>
+        </fieldset>
+
+        <fieldset data-form-progress-target="step" class="m-0 flex min-w-0 flex-col gap-3.5 lg:gap-5 border-0 p-0">
+            <legend class="mb-1.5 lg:mb-2 p-0 font-display font-semibold text-[28px] lg:text-[32px]">2 · {{ 'signup.s2.legend'|trans }}</legend>
+            <p class="m-0 text-[13px] lg:text-small text-ink-mute">{{ 'signup.s2.hint'|trans }}</p>
+            <div class="grid gap-2 lg:gap-2.5 md:grid-cols-2 xl:grid-cols-3">
+                {% for goal in ['stronger', 'fitness', 'weight', 'injury_free', 'energy', 'rhythm'] %}
+                    <twig:Ui:Option name="goals[]" value="{{ goal }}">{{ ('signup.s2.goals.' ~ goal)|trans }}</twig:Ui:Option>
+                {% endfor %}
+            </div>
+            <div role="radiogroup" aria-labelledby="experience-label" class="flex flex-col gap-2.5">
+                <span id="experience-label" class="text-small font-semibold text-ink-soft">{{ 'signup.s2.experience'|trans }}</span>
+                <div class="grid grid-cols-3 gap-1.5 lg:gap-2.5">
+                    {% for level in ['rarely', 'sometimes', 'regularly'] %}
+                        <twig:Ui:Option type="radio" name="experience" value="{{ level }}" class="max-lg:justify-center max-lg:px-2 max-lg:text-[13px]">{{ ('signup.s2.levels.' ~ level)|trans }}</twig:Ui:Option>
+                    {% endfor %}
+                </div>
+            </div>
+            <twig:Ui:Field id="injuries" as="textarea" label="{{ 'signup.s2.injuries'|trans }}" placeholder="{{ 'signup.s2.injuries_placeholder'|trans }}" />
+        </fieldset>
+
+        <fieldset data-form-progress-target="step" class="m-0 flex min-w-0 flex-col gap-3.5 lg:gap-5 border-0 p-0">
+            <legend class="mb-1.5 lg:mb-2 p-0 font-display font-semibold text-[28px] lg:text-[32px]">3 · {{ 'signup.s3.legend'|trans }}</legend>
+            <p class="m-0 text-[13px] lg:text-small text-ink-mute">{{ 'signup.s3.hint'|trans }}</p>
+            {# Availability: days (mon–sat) x dayparts as real checkboxes. Saturday evening is outside training hours. #}
+            <div role="group" aria-label="{{ 'signup.s3.legend'|trans }}" class="grid grid-cols-[64px_repeat(6,minmax(0,1fr))] gap-1 lg:grid-cols-[110px_repeat(6,minmax(72px,1fr))] lg:gap-1.5">
+                <span></span>
+                {% for day in days %}
+                    <span class="text-center text-[12px] lg:text-small font-semibold text-ink-soft" aria-hidden="true">{{ ('days.short.' ~ day)|trans }}</span>
+                {% endfor %}
+                {% for part in dayparts %}
+                    <span class="flex items-center text-[12px] lg:text-small font-semibold text-ink-soft" aria-hidden="true">{{ ('signup.s3.dayparts.' ~ part)|trans }}</span>
+                    {% for day in days %}
+                        {%- set closed = day == 'sat' and part == 'evening' -%}
+                        <label class="flex min-h-touch lg:min-h-input cursor-pointer items-center justify-center border border-control transition-colors has-checked:border-accent has-focus-visible:outline-2 has-focus-visible:outline-accent has-disabled:cursor-not-allowed has-disabled:opacity-40">
+                            <input type="checkbox" name="availability[{{ day }}][]" value="{{ part }}" aria-label="{{ ('days.long.' ~ day)|trans }} {{ ('signup.s3.dayparts.' ~ part)|trans|lower }}" class="m-0 focus-visible:outline-none"{{ closed ? ' disabled' }}>
+                        </label>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+            <div role="radiogroup" aria-labelledby="format-label" class="flex flex-col gap-2.5">
+                <span id="format-label" class="text-small font-semibold text-ink-soft">{{ 'signup.s3.format'|trans }}</span>
+                <div class="grid gap-1.5 lg:gap-2.5 md:grid-cols-3">
+                    <twig:Ui:Option type="radio" name="format" value="group">{{ 'signup.s3.formats.group'|trans({'%max%': max}) }}</twig:Ui:Option>
+                    <twig:Ui:Option type="radio" name="format" value="one_on_one">{{ 'signup.s3.formats.one_on_one'|trans }}</twig:Ui:Option>
+                    <twig:Ui:Option type="radio" name="format" value="unknown">{{ 'signup.s3.formats.unknown'|trans }}</twig:Ui:Option>
+                </div>
+            </div>
+            <twig:Ui:Field id="call_preference" label="{{ 'signup.s3.call'|trans }}" placeholder="{{ 'signup.s3.call_placeholder'|trans }}" />
+        </fieldset>
+
+        {# ---- Consent + submit (desktop: amber frame; mobile: fixed bar below) ---- #}
+        <div class="flex flex-wrap items-center justify-between gap-6 lg:border lg:border-accent lg:px-8 lg:py-7">
+            <label class="flex min-w-[260px] flex-1 items-start gap-2.5 text-[13px] lg:text-small leading-normal text-ink-soft">
+                <input type="checkbox" name="consent" value="1" required class="mt-0.5 shrink-0">
+                <span>{{ 'signup.consent'|trans }} <a href="#" class="text-accent">{{ 'signup.consent_link'|trans }}</a>.</span>
+            </label>
+            <twig:Ui:Button type="submit" size="lg" class="hidden lg:inline-flex">{{ 'signup.submit'|trans }}</twig:Ui:Button>
+        </div>
+    </form>
+</div>
+
+<div class="lg:hidden fixed inset-x-0 bottom-0 z-40 flex flex-col gap-2 border-t border-line bg-ground px-gutter-m pt-3.5 pb-7">
+    <twig:Ui:Button type="submit" form="intake-form" class="w-full py-[18px]">{{ 'signup.submit'|trans }}</twig:Ui:Button>
+    <span class="text-center text-[12px] text-ink-mute">{{ 'signup.submit_note'|trans }}</span>
+</div>
+{% endblock %}
